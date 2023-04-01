@@ -1,10 +1,13 @@
 FROM node:18
 WORKDIR /app
-COPY package.json
-RUN npm install
+COPY package.json .
+COPY package-lock.json .
+RUN npm ci
+
 COPY tsconfig.json .
 COPY tsconfig.node.json .
 COPY vite.config.ts .
+
 COPY src /app/src
 EXPOSE 5173
 CMD ["npm", "run", "dev", "--host"]
