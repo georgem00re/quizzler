@@ -1,6 +1,7 @@
 
 import React from "react";
+import QuizzlerLogo from "../assets/quizzler-logo.svg";
 
 export default function Logo() {
-	return <h1>Working!</h1>
+	return <img src={QuizzlerLogo} fill="white"/>
 }
