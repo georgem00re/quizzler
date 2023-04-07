@@ -5,7 +5,9 @@ services:
     build:
       context: "./react-frontend/"
     ports:
-      - "5173:5173"
+      - "${REACT_FRONTEND_PORT}:${REACT_FRONTEND_PORT}"
+    expose:
+      - "${REACT_FRONTEND_PORT}"
     volumes:
       - ${PWD}/react-frontend/package.json:/app/package.json
       - ${PWD}/react-frontend/tsconfig.json:/app/tsconfig.json
@@ -18,8 +20,12 @@ services:
     build:
       context: "./nodejs-backend"
     ports:
-      - "3000:3000"
+      - "${NODEJS_BACKEND_PORT}:${NODEJS_BACKEND_PORT}"
+    expose:
+      - "${NODEJS_BACKEND_PORT}"
     volumes:
       - ${PWD}/nodejs-backend/index.js:/app/index.js
       - ${PWD}/nodejs-backend/package.json:/app/package.json
       - ${PWD}/nodejs-backend/package-lock.json:/app/package-lock.json
+    environment:
+      NODEJS_BACKEND_PORT: ${NODEJS_BACKEND_PORT}
