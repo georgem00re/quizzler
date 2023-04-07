@@ -6,6 +6,9 @@ const cors = require("cors");
 const schedule = require("node-schedule");
 var quiz = null;
 
+// apply cors middleware
+app.use(cors())
+
 // define http server routes
 app.get("*", (req, res) => {
     res.send(quiz);
