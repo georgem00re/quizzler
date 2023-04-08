@@ -7,7 +7,7 @@ interface PlayButtonProps {
 
 const fetchQuiz = () => {
     getQuiz().then((res) => {
-        console.log(res);
+        // update quiz state using res.data
     })
 }
 
