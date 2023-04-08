@@ -15,6 +15,8 @@ services:
       - ${PWD}/react-frontend/index.html:/app/index.html
       - ${PWD}/react-frontend/src:/app/src
     network_mode: "bridge"
+    environment:
+      NODEJS_BACKEND_PORT: ${NODEJS_BACKEND_PORT}
   nodejs-backend:
     image: "quizzler-nodejs-backend"
     build:
