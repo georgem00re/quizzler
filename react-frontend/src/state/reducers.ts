@@ -14,3 +14,13 @@ export function questionNumberReducer(state = 0, action) {
 		return state;
 	}
 }
+
+export function scoreReducer(state = 0, action) {
+	if (action.type === "CORRECT_ANSWER") {
+		return state + 1;
+	} else if (action.type === "INCORRECT_ANSWER") {
+		return state;
+	} else {
+		return state;
+	}
+}

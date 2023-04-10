@@ -4,5 +4,5 @@ interface QuestionHeaderProps {
 }
 
 export default function QuestionHeader(props: QuestionHeaderProps) {
-	return <h1>{props.text}</h1>
+	return <h1 class="title is-6">{props.text}</h1>
 }

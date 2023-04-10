@@ -11,3 +11,15 @@ export function nextQuestion() {
 		type: "NEXT_QUESTION"
 	}
 }
+
+export function correctAnswer() {
+	return {
+		type: "CORRECT_ANSWER"
+	}
+}
+
+export function incorrectAnswer() {
+	return {
+		type: "INCORRECT_ANSWER"
+	}
+}

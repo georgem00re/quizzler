@@ -1,9 +1,10 @@
 
 import { useDispatch } from "react-redux";
-import { nextQuestion } from "../state/actions.ts";
+import { nextQuestion, correctAnswer, incorrectAnswer } from "../state/actions.ts";
 
 interface AnswerButtonProps {
-	text: string
+	text: string,
+	correct: bool
 }
 
 export default function AnswerButton(props) {
@@ -11,6 +12,7 @@ export default function AnswerButton(props) {
 	const dispatch = useDispatch();
 
 	const onClick = () => {
+		props.correct ? dispatch(correctAnswer()) : dispatch(incorrectAnswer())
 		dispatch(nextQuestion())
 	}
 

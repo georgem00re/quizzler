@@ -12,7 +12,7 @@ export default function QuizPage() {
 	const answers = question.incorrectAnswers.concat([question.correctAnswer])
 
 	const buttons = answers.map((element, index) => {
-		return <AnswerButton key={index} text={element}/>
+		return <AnswerButton key={index} text={element} correct={ element == question.correctAnswer ? true : false }/>
 	})
 
 	return (
