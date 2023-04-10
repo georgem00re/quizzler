@@ -5,3 +5,9 @@ export function updateQuiz(quiz) {
 		payload: quiz
 	}
 }
+
+export function nextQuestion() {
+	return {
+		type: "NEXT_QUESTION"
+	}
+}

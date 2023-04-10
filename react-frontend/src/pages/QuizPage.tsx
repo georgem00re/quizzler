@@ -7,7 +7,7 @@ import QuestionHeader from "../components/QuestionHeader.tsx";
 export default function QuizPage() {
 
 	const quiz = useSelector(state => state.quiz)
-	const questionNumber = 0;
+	const questionNumber = useSelector(state => state.questionNumber)
 	const question = quiz[questionNumber];
 	const answers = question.incorrectAnswers.concat([question.correctAnswer])
 
