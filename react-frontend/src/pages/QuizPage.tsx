@@ -16,8 +16,8 @@ export default function QuizPage() {
 	})
 
 	return (
-		<div class="hero has-background-dark is-fullheight is-fullwidth p-5">
-			<div class="container">
+		<div class="hero has-background-light is-fullheight is-fullwidth p-5">
+			<div class="container is-flex is-flex-direction-column is-justify-content-center">
 				<div class="box has-text-centered">
 					<QuestionHeader text={quiz[questionNumber].question}/>
 				</div>
