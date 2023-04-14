@@ -1,6 +1,7 @@
 
 import { useSelector } from "react-redux";
 import ShareButton from "./ShareButton.tsx";
+import ScoreLabel from "./ScoreLabel.tsx";
 
 export default function ScoreDialog() {
 
@@ -12,7 +13,7 @@ export default function ScoreDialog() {
 			<div class="modal-content">
 				<div class="container">
 					<div class="box">
-						<h1>{score}</h1>
+						<ScoreLabel score={score}/>
 						<ShareButton/>
 					</div>
 				</div>
