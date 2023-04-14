@@ -3,6 +3,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import AnswerButton from "../components/AnswerButton.tsx";
 import QuestionHeader from "../components/QuestionHeader.tsx";
+import ScoreDialog from "../components/ScoreDialog.tsx";
 
 export default function QuizPage() {
 

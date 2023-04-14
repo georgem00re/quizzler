@@ -1,6 +1,6 @@
 import LandingPage from "./pages/LandingPage.tsx";
 import QuizPage from "./pages/QuizPage.tsx";
-import ScorePage from "./pages/ScorePage.tsx";
+import ScoreDialog from "./components/ScoreDialog.tsx";
 import { useSelector } from "react-redux";
 import React from "react";
 
@@ -11,7 +11,7 @@ function App() {
 
   const renderPage = () => {
     if (quiz == null) { return <LandingPage/> }
-    if (questionNumber == quiz.length) { return <ScorePage/> }
+    if (questionNumber == quiz.length) { return <ScoreDialog/> }
     return <QuizPage/>
   }
 
