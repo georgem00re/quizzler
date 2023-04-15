@@ -18,6 +18,6 @@ export default function PlayButton({ onClick }: PlayButtonProps) {
         })
     }
 
-    return <button class="button is-dark" onClick={() => fetchQuiz()}>Let's Play!</button>
+    return <button class="button is-dark px-5" onClick={() => fetchQuiz()}>Let's Play!</button>
 };
 

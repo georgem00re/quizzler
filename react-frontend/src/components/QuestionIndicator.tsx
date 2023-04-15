@@ -1,8 +1,8 @@
 
 interface QuestionIndicatorProps {
-	questionNumber: number
+	text: number
 }
 
 export default function QuestionIndicator(props: QuestionIndicatorProps) {
-	return <h1>{props.questionNumber}</h1>
+	return <h1 class="title is-4">{props.text}</h1>
 }

@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import AnswerButton from "../components/AnswerButton.tsx";
 import QuestionHeader from "../components/QuestionHeader.tsx";
 import ScoreDialog from "../components/ScoreDialog.tsx";
+import QuestionIndicator from "../components/QuestionIndicator.tsx";
 
 export default function QuizPage() {
 
@@ -20,6 +21,7 @@ export default function QuizPage() {
 		<div class="hero has-background-light is-fullheight is-fullwidth p-5">
 			<div class="container is-flex is-flex-direction-column is-justify-content-center">
 				<div class="box has-text-centered">
+					<QuestionIndicator text={questionNumber + 1}/>
 					<QuestionHeader text={quiz[questionNumber].question}/>
 				</div>
 				<div class="box is-flex is-flex-direction-column">
