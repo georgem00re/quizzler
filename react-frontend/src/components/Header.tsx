@@ -13,5 +13,6 @@ export default function Header() {
 
 const style = {
     margin: "0px",
-    marginRight: "5px"
+    marginRight: "10px",
+    fontFamily: "Avenir Book"
 }

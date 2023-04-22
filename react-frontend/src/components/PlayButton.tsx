@@ -1,6 +1,7 @@
 import React from "react";
 import { getQuiz } from "../services/data.service.ts";
 import { useDispatch } from "react-redux";
+import { BsFillPlayFill } from 'react-icons/bs';
 
 interface PlayButtonProps {
     onClick: () => void
@@ -18,6 +19,14 @@ export default function PlayButton({ onClick }: PlayButtonProps) {
         })
     }
 
-    return <button class="button is-dark px-5" onClick={() => fetchQuiz()}>Let's Play!</button>
+    return (
+        <button class="button is-dark px-5" style={style} onClick={() => fetchQuiz()}>
+        Let's Play
+            <BsFillPlayFill style={{ marginLeft: "10px"}}/>
+        </button>
+    )
 };
 
+const style = {
+    fontFamily: "Avenir"
+}

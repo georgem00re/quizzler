@@ -4,8 +4,11 @@ import { nextQuestion, correctAnswer, incorrectAnswer } from "../state/actions.t
 
 interface AnswerButtonProps {
 	text: string,
-	correct: bool
+	correct: bool,
+	index: number
 }
+
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 export default function AnswerButton(props) {
 
@@ -16,5 +19,39 @@ export default function AnswerButton(props) {
 		dispatch(nextQuestion())
 	}
 
-	return <button onClick={() => onClick()} class="button is-dark m-2">{props.text}</button>
+	return (
+		<button onClick={() => onClick()} class="m-2" style={customStyling}>
+			<div style={letter}>{letters[props.index]}</div>
+			{props.text}
+		</button>
+	)
+}
+
+const customStyling = {
+	fontFamily: "Avenir Heavy",
+	fontSize: "18px",
+	color: "#212121",
+	backgroundColor: "white",
+	boxShadow: "3px 3px 3px 1px rgba(110,110,110,0.1)",
+	borderRadius: "5px",
+	borderStyle: "none",
+	paddingTop: "15px",
+	paddingBottom: "15px",
+	paddingLeft: "15px",
+	cursor: "pointer",
+	display: "flex",
+	justifyContent: "left",
+	alignItems: "center"
+}
+
+const letter = {
+	backgroundColor: "rgba(128, 128, 128, 0.1)",
+	height: "35px",
+	width: "35px",
+	borderRadius: "50%",
+	color: "#212121",
+	display: "flex",
+	justifyContent: "center",
+	alignItems: "center",
+	marginRight: "40px",
 }
