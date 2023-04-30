@@ -1,6 +1,8 @@
 
-export default function QuestionHeader({ text }) {
-	return <h1 style={style}>{text}</h1>
+export default function QuestionFooter() {
+	return (
+		<div style={style}>Select from the options above.</div>
+	)
 }
 
 const style = {

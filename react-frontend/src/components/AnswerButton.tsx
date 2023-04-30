@@ -20,7 +20,7 @@ export default function AnswerButton(props) {
 	}
 
 	return (
-		<button onClick={() => onClick()} class="m-2" style={customStyling}>
+		<button onClick={() => onClick()} class="m-1" style={customStyling}>
 			<div style={letter}>{letters[props.index]}</div>
 			{props.text}
 		</button>
@@ -28,20 +28,20 @@ export default function AnswerButton(props) {
 }
 
 const customStyling = {
-	fontFamily: "Avenir Heavy",
+	fontFamily: "Avenir",
 	fontSize: "18px",
 	color: "#212121",
 	backgroundColor: "white",
-	boxShadow: "3px 3px 3px 1px rgba(110,110,110,0.1)",
-	borderRadius: "5px",
-	borderStyle: "none",
-	paddingTop: "15px",
-	paddingBottom: "15px",
-	paddingLeft: "15px",
+	borderRadius: "2px",
+	borderStyle: "sold",
+	borderWidth: "1px",
+	borderColor: "grey",
+	padding: "5px",
 	cursor: "pointer",
 	display: "flex",
 	justifyContent: "left",
-	alignItems: "center"
+	alignItems: "center",
+	boxSizing: "border-box",
 }
 
 const letter = {
