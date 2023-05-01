@@ -7,9 +7,9 @@ export function quizReducer(state = null, action) {
 	}
 }
 
-export function questionNumberReducer(state = 0, action) {
-	if (action.type === "NEXT_QUESTION") {
-		return state + 1;
+export function answeredQuestions(state = [], action) {
+	if (action.type === "ANSWER_QUESTION") {
+		return [...state, action.payload];
 	} else {
 		return state;
 	}

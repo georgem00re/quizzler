@@ -4,15 +4,15 @@ export default function QuestionHeader({ text }) {
 }
 
 const style = {
-	fontSize: 20,
+	fontSize: 18,
 	fontFamily: "Avenir Heavy",
-	width: "450px",
-	margin: "10px",
+	width: "100%",
 	borderStyle: "solid",
 	borderWidth: "1px",
-	borderColor: "grey",
+	borderColor: "#CFCFCF",
 	borderRadius: "5px",
 	padding: "5px",
 	paddingLeft: "10px",
-	backgroundColor: "#CAE1ED"
+	backgroundColor: "#CAE1ED",
+	color: "black",
 }

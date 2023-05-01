@@ -1,10 +1,10 @@
 
 import { createStore, combineReducers } from "redux";
-import { quizReducer, questionNumberReducer, scoreReducer } from "./reducers.ts";
+import { quizReducer, answeredQuestions, scoreReducer } from "./reducers.ts";
 
 const reducers = combineReducers({
 	quiz: quizReducer,
-	questionNumber: questionNumberReducer,
+	answeredQuestions: answeredQuestions,
 	score: scoreReducer
 })
 

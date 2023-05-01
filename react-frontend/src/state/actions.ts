@@ -6,9 +6,10 @@ export function updateQuiz(quiz) {
 	}
 }
 
-export function nextQuestion() {
+export function answerQuestion(index) {
 	return {
-		type: "NEXT_QUESTION"
+		type: "ANSWER_QUESTION",
+		payload: index
 	}
 }
 

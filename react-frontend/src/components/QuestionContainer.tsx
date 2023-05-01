@@ -4,24 +4,37 @@ import QuestionHeader from "./QuestionHeader.tsx";
 import AnswerContainer from "./AnswerContainer.tsx";
 import AnswerButton from "./AnswerButton.tsx";
 
-export default function QuestionContainer({ question, correctAnswer, incorrectAnswers }) {
-	const style = {
-		borderRadius: "20px",
-	}
+interface QuestionContainerProps {
+	question: string,
+	correctAnswer: string,
+	incorrectAnswers: string[],
+	answered: bool,
+}
 
-	const answers = [].concat(incorrectAnswers, correctAnswer);
+export default function QuestionContainer({ question, correctAnswer, incorrectAnswers, answered, questionNumber }: QuestionContainerProps) {
 
-	const answerButtons = answers.map((element, index) => {
-		return <AnswerButton key={index} index={index} text={"Hello!"}/>
+	const answerButtons = [...incorrectAnswers, correctAnswer].map((element, index) => {
+		return <AnswerButton key={index} index={index} text={element} answered={answered} correct={element == correctAnswer ? true : false} questionNumber={questionNumber}/>
 	})
 
 	return (
 		<div style={style}>
-			<QuestionHeader text={"Who is best?"}/>
+			<QuestionHeader text={question}/>
 			<AnswerContainer>
 				{answerButtons}
 			</AnswerContainer>
-			<QuestionFooter/>
+			<QuestionFooter correctAnswer={correctAnswer} answered={answered}/>
 		</div>
 	)
 };
+
+const style = {
+	borderRadius: "5px",
+	borderStyle: "solid",
+	borderWidth: "1px",
+	borderColor: "#CFCFCF",
+	padding: "10px",
+	backgroundColor: "#F9F9F9",
+	width: "500px",
+	margin: "20px",
+}

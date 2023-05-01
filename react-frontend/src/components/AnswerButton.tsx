@@ -1,57 +1,47 @@
 
 import { useDispatch } from "react-redux";
-import { nextQuestion, correctAnswer, incorrectAnswer } from "../state/actions.ts";
+import { answerQuestion, correctAnswer, incorrectAnswer } from "../state/actions.ts";
+import LetterIcon from "./LetterIcon.tsx";
 
 interface AnswerButtonProps {
 	text: string,
 	correct: bool,
-	index: number
+	index: number,
+	answered: bool,
 }
 
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-export default function AnswerButton(props) {
+export default function AnswerButton({ text, correct, index, answered, questionNumber }) {
 
 	const dispatch = useDispatch();
+	const color = answered == false ? "#001133" : correct == true ? "green" : "#83180F";
 
 	const onClick = () => {
-		props.correct ? dispatch(correctAnswer()) : dispatch(incorrectAnswer())
-		dispatch(nextQuestion())
+		correct ? dispatch(correctAnswer()) : dispatch(incorrectAnswer())
+		dispatch(answerQuestion(questionNumber))
 	}
 
 	return (
-		<button onClick={() => onClick()} class="m-1" style={customStyling}>
-			<div style={letter}>{letters[props.index]}</div>
-			{props.text}
+		<button onClick={() => onClick()} style={style} disabled={answered}>
+			<LetterIcon index={index} color={color}/>
+			{text}
 		</button>
 	)
 }
 
-const customStyling = {
+const style = {
 	fontFamily: "Avenir",
-	fontSize: "18px",
-	color: "#212121",
-	backgroundColor: "white",
-	borderRadius: "2px",
-	borderStyle: "sold",
+	fontSize: "16px",
+	color: "black",
+	backgroundColor: "#DEF0F8",
+	borderRadius: "5px",
+	borderStyle: "solid",
 	borderWidth: "1px",
-	borderColor: "grey",
+	borderColor: "#CFCFCF",
 	padding: "5px",
 	cursor: "pointer",
+	margin: "5px 0px 5px 0px",
 	display: "flex",
-	justifyContent: "left",
 	alignItems: "center",
 	boxSizing: "border-box",
-}
-
-const letter = {
-	backgroundColor: "rgba(128, 128, 128, 0.1)",
-	height: "35px",
-	width: "35px",
-	borderRadius: "50%",
-	color: "#212121",
-	display: "flex",
-	justifyContent: "center",
-	alignItems: "center",
-	marginRight: "40px",
+	width: "100%",
 }
