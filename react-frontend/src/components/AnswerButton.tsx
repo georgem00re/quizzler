@@ -1,7 +1,10 @@
 
 import { useDispatch } from "react-redux";
+import { useState } from "react";
 import { answerQuestion, correctAnswer, incorrectAnswer } from "../state/actions.ts";
 import LetterIcon from "./LetterIcon.tsx";
+import CrossSymbol from "./CrossSymbol.tsx";
+import TickSymbol from "./TickSymbol.tsx";
 
 interface AnswerButtonProps {
 	text: string,
@@ -10,20 +13,26 @@ interface AnswerButtonProps {
 	answered: bool,
 }
 
+const DARK_RED = "#83180F";
+const DARK_GREEN = "green"
+
 export default function AnswerButton({ text, correct, index, answered, questionNumber }) {
 
 	const dispatch = useDispatch();
-	const color = answered == false ? "#001133" : correct == true ? "green" : "#83180F";
+	const color = answered == false ? "#001133" : correct == true ? DARK_GREEN : DARK_RED;
+	const [selected, setSelected] = useState(false);
 
 	const onClick = () => {
 		correct ? dispatch(correctAnswer()) : dispatch(incorrectAnswer())
 		dispatch(answerQuestion(questionNumber))
+		setSelected(true);
 	}
 
 	return (
 		<button onClick={() => onClick()} style={style} disabled={answered}>
 			<LetterIcon index={index} color={color}/>
 			{text}
+			{ selected ? correct ? <TickSymbol color={DARK_GREEN}/> : <CrossSymbol color={DARK_RED}/> : null}
 		</button>
 	)
 }
