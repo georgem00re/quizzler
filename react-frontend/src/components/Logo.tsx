@@ -18,5 +18,5 @@ export default function Logo(props: LogoProps): JSX.element {
 
 const style = {
 	margin: "0px",
-	marginLeft: "10px"
+	marginLeft: "20px"
 }

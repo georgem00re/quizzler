@@ -8,6 +8,7 @@ import AnswerButton from "./components/AnswerButton.tsx";
 import QuestionContainer from "./components/QuestionContainer.tsx";
 import AnswerContainer from "./components/AnswerContainer.tsx";
 import LoadingIndicator from "./components/LoadingIndicator.tsx";
+import NavigationBar from "./components/NavigationBar.tsx";
 import { updateQuiz } from "./state/actions.ts";
 import React from "react";
 
@@ -33,6 +34,7 @@ function App() {
   return (
     <React.Fragment>
       <ScoreDialog active={answeredQuestions.length == quiz.length ? true : false} onDismiss={() => setScoreDialogActive(false)}/>
+      <NavigationBar/>
       <div class="hero has-background-light is-fullheight is-fullwidth p-5">
         <div class="container is-flex is-flex-direction-column is-justify-content-center">
           {questions}
