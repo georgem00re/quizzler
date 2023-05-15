@@ -1,8 +1,8 @@
 
-import QuestionFooter from "./QuestionFooter.tsx";
-import QuestionHeader from "./QuestionHeader.tsx";
-import AnswerContainer from "./AnswerContainer.tsx";
-import AnswerButton from "./AnswerButton.tsx";
+import QuestionFooter from "../misc/QuestionFooter.tsx";
+import QuestionHeader from "../misc/QuestionHeader.tsx";
+import AnswerContainer from "../containers/AnswerContainer.tsx";
+import AnswerButton from "../buttons/AnswerButton.tsx";
 
 interface QuestionContainerProps {
 	question: string,

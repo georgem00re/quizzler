@@ -5,7 +5,7 @@ export default function QuestionHeader({ text }) {
 
 const style = {
 	fontSize: 18,
-	fontFamily: "Avenir Heavy",
+	fontFamily: "Avenir Medium",
 	width: "100%",
 	borderStyle: "solid",
 	borderWidth: "1px",
@@ -13,6 +13,6 @@ const style = {
 	borderRadius: "5px",
 	padding: "5px",
 	paddingLeft: "10px",
-	backgroundColor: "#CAE1ED",
+	backgroundColor: "#EFEFEF",
 	color: "black",
 }

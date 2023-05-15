@@ -18,6 +18,6 @@ const style = {
 	borderRadius: "5px",
 	padding: "5px",
 	paddingLeft: "10px",
-	backgroundColor: "#CAE1ED",
+	backgroundColor: "#EFEFEF",
 	color: "black",
 }

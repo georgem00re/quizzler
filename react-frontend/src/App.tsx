@@ -1,21 +1,22 @@
-import LandingPage from "./pages/LandingPage.tsx";
-import QuizPage from "./pages/QuizPage.tsx";
-import ScoreDialog from "./components/ScoreDialog.tsx";
+import ScoreDialog from "./components/dialogs/ScoreDialog.tsx";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { getQuiz } from "./services/data.service.ts";
-import AnswerButton from "./components/AnswerButton.tsx";
-import QuestionContainer from "./components/QuestionContainer.tsx";
-import AnswerContainer from "./components/AnswerContainer.tsx";
-import LoadingIndicator from "./components/LoadingIndicator.tsx";
-import NavigationBar from "./components/NavigationBar.tsx";
+import QuestionContainer from "./components/containers/QuestionContainer.tsx";
+import AnswerContainer from "./components/containers/AnswerContainer.tsx";
+import LoadingIndicator from "./components/misc/LoadingIndicator.tsx";
+import NavigationBar from "./components/misc/NavigationBar.tsx";
+import Canvas from "./components/containers/Canvas.tsx";
 import { updateQuiz } from "./state/actions.ts";
 import React from "react";
+import HelpDialog from "./components/dialogs/HelpDialog.tsx";
+import StatsDialog from "./components/dialogs/StatsDialog.tsx";
 
 function App() {
 
   const dispatch = useDispatch();
   const quiz = useSelector(state => state.quiz)
+  const helpDialogOpen = useSelector(state => state.helpDialogOpen);
   const answeredQuestions = useSelector(state => state.answeredQuestions)
   const score = useSelector(state => state.score);
   const [scoreDialogActive, setScoreDialogActive] = useState(false);
@@ -32,15 +33,17 @@ function App() {
 
   if (quiz == null) return <LoadingIndicator/>
   return (
-    <React.Fragment>
+    <Canvas>
       <ScoreDialog active={answeredQuestions.length == quiz.length ? true : false} onDismiss={() => setScoreDialogActive(false)}/>
+      <HelpDialog/>
+      <StatsDialog/>
       <NavigationBar/>
       <div class="hero has-background-light is-fullheight is-fullwidth p-5">
         <div class="container is-flex is-flex-direction-column is-justify-content-center">
           {questions}
         </div>
       </div>
-    </React.Fragment>
+    </Canvas>
   );
 }
 
