@@ -5,7 +5,7 @@ import { answerQuestion, correctAnswer, incorrectAnswer } from "../../state/acti
 import LetterIcon from "../misc/LetterIcon.tsx";
 import { RxCross2 } from "react-icons/rx";
 import { FiCheck } from "react-icons/fi";
-import { WHITE, SPACE_GREY, LIGHT_GREY } from "../../constants/colours.js";
+import { WHITE, SPACE_GREY, LIGHT_GREY, BORDER_GREY, GREY, DARK_GREEN, DARK_RED, LIGHT_GREEN, LIGHT_RED } from "../../constants/colours.js";
 
 interface AnswerButtonProps {
 	text: string,
@@ -14,16 +14,16 @@ interface AnswerButtonProps {
 	answered: bool,
 }
 
-const DARK_RED = "#83180F";
-const DARK_GREEN = "green"
-
 export default function AnswerButton({ text, correct, index, answered, questionNumber }) {
 
 	const dispatch = useDispatch();
 	const lightTheme = useSelector(state => state.lightTheme);
-	const color = answered == false ? lightTheme ? SPACE_GREY : WHITE : correct == true ? DARK_GREEN : DARK_RED;
+	const GREEN = lightTheme ? DARK_GREEN : LIGHT_GREEN;
+	const RED = lightTheme ? DARK_RED : LIGHT_RED;
+	const color = answered == false ? lightTheme ? SPACE_GREY : WHITE : correct == true ? GREEN : RED;
 	const backgroundColor = lightTheme ? "WHITE" : SPACE_GREY;
 	const [selected, setSelected] = useState(false);
+	const borderColor = lightTheme ? BORDER_GREY : GREY;
 
 	const onClick = () => {
 		correct ? dispatch(correctAnswer()) : dispatch(incorrectAnswer())
@@ -32,10 +32,10 @@ export default function AnswerButton({ text, correct, index, answered, questionN
 	}
 
 	return (
-		<button onClick={() => onClick()} style={{...style, backgroundColor, color}} disabled={answered}>
+		<button onClick={() => onClick()} style={{...style, backgroundColor, color, borderColor}} disabled={answered}>
 			<LetterIcon index={index} color={color}/>
 			{text}
-			{ selected ? correct ? <FiCheck style={{ marginLeft: "15px" }} color={DARK_GREEN}/> : <RxCross2 style={{ marginLeft: "15px" }} color={DARK_RED}/> : null}
+			{ selected ? correct ? <FiCheck style={{ marginLeft: "15px" }} color={color}/> : <RxCross2 style={{ marginLeft: "15px" }} color={color}/> : null}
 		</button>
 	)
 }

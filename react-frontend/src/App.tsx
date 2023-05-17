@@ -11,6 +11,7 @@ import { updateQuiz } from "./state/actions.ts";
 import React from "react";
 import HelpDialog from "./components/dialogs/HelpDialog.tsx";
 import StatsDialog from "./components/dialogs/StatsDialog.tsx";
+import { LIGHT_GREY, SPACE_GREY, WHITE } from "./constants/colours.js";
 
 function App() {
 
@@ -20,6 +21,8 @@ function App() {
   const answeredQuestions = useSelector(state => state.answeredQuestions)
   const score = useSelector(state => state.score);
   const [scoreDialogActive, setScoreDialogActive] = useState(false);
+  const lightTheme = useSelector(state => state.lightTheme);
+  const backgroundColor = lightTheme ? WHITE : SPACE_GREY;
 
   useEffect(() => {
     getQuiz().then((res) => {
@@ -38,7 +41,7 @@ function App() {
       <HelpDialog/>
       <StatsDialog/>
       <NavigationBar/>
-      <div class="hero has-background-light is-fullheight is-fullwidth p-5">
+      <div class="hero is-fullheight is-fullwidth p-5" style={{ backgroundColor }}>
         <div class="container is-flex is-flex-direction-column is-justify-content-center">
           {questions}
         </div>

@@ -3,6 +3,8 @@ import QuestionFooter from "../misc/QuestionFooter.tsx";
 import QuestionHeader from "../misc/QuestionHeader.tsx";
 import AnswerContainer from "../containers/AnswerContainer.tsx";
 import AnswerButton from "../buttons/AnswerButton.tsx";
+import { BORDER_GREY, GREY } from "../../constants/colours.js";
+import { useSelector } from "react-redux";
 
 interface QuestionContainerProps {
 	question: string,
@@ -13,12 +15,15 @@ interface QuestionContainerProps {
 
 export default function QuestionContainer({ question, correctAnswer, incorrectAnswers, answered, questionNumber }: QuestionContainerProps) {
 
+	const lightTheme = useSelector(state => state.lightTheme);
+	const borderColor = lightTheme ? BORDER_GREY : GREY;
+
 	const answerButtons = [...incorrectAnswers, correctAnswer].map((element, index) => {
 		return <AnswerButton key={index} index={index} text={element} answered={answered} correct={element == correctAnswer ? true : false} questionNumber={questionNumber}/>
 	})
 
 	return (
-		<div style={style}>
+		<div style={{...style, borderColor}}>
 			<QuestionHeader text={question}/>
 			<AnswerContainer>
 				{answerButtons}
@@ -34,7 +39,7 @@ const style = {
 	borderWidth: "1px",
 	borderColor: "#CFCFCF",
 	padding: "10px",
-	backgroundColor: "#F9F9F9",
+	backgroundColor: "transparent",
 	width: "500px",
 	margin: "20px",
 }
