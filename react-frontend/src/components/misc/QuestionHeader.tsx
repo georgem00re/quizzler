@@ -1,11 +1,11 @@
 
 import { useSelector } from "react-redux";
-import { WHITE, SPACE_GREY, LIGHT_GREY, GREY, BORDER_GREY } from "../../constants/colours.js";
+import { WHITE, SPACE_GREY, GREY, BORDER_GREY } from "../../constants/colours.js";
 
 export default function QuestionHeader({ text }) {
 
 	const lightTheme = useSelector(state => state.lightTheme);
-	const backgroundColor = lightTheme ? LIGHT_GREY : SPACE_GREY;
+	const backgroundColor = lightTheme ? WHITE : SPACE_GREY;
 	const textColor = lightTheme ? SPACE_GREY : WHITE;
 	const borderColor = lightTheme ? BORDER_GREY : GREY;
 

@@ -10,7 +10,12 @@ export default function ToggleThemeButton() {
 	const color = isLightTheme ? SPACE_GREY : WHITE;
 	const icon = isLightTheme ? <MdLightMode color={color} size="35px"/> : <MdDarkMode color={color} size="35px"/>;
 
-	return <button style={{...style}} onClick={() => dispatch(toggleTheme())}>{icon}</button>;
+	const onClick = () => {
+		dispatch(toggleTheme())
+		isLightTheme ? localStorage.setItem("theme", "dark") : localStorage.setItem("theme", "light")
+	}
+
+	return <button style={{...style}} onClick={onClick}>{icon}</button>;
 }
 
 const style = {

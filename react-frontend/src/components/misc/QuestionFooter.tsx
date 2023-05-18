@@ -1,12 +1,12 @@
 
 import { useSelector } from "react-redux";
-import { WHITE, SPACE_GREY, LIGHT_GREY, BORDER_GREY, GREY } from "../../constants/colours.js";
+import { WHITE, SPACE_GREY, BORDER_GREY, GREY } from "../../constants/colours.js";
 
 export default function QuestionFooter({ correctAnswer, answered}) {
 
 	const lightTheme = useSelector(state => state.lightTheme);
 	const text = answered == true ? `Correct Answer: ${correctAnswer}` : "Select from the options above."
-	const backgroundColor = lightTheme ? LIGHT_GREY : SPACE_GREY;
+	const backgroundColor = lightTheme ? WHITE : SPACE_GREY;
 	const textColor = lightTheme ? SPACE_GREY : WHITE;
 	const borderColor = lightTheme ? BORDER_GREY : GREY;
 
