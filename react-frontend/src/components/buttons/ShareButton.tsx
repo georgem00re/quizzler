@@ -1,12 +1,49 @@
 
 import { BsShareFill } from "react-icons/bs";
+import { FaClipboardList } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import { useState } from "react";
+import { Fragment } from "react";
+import { WHITE, SPACE_GREY } from "../../constants/colours.js";
 
 export default function ShareButton(props) {
+	const answeredQuestions = useSelector(state => state.answeredQuestions);
+	const isQuizComplete = answeredQuestions.length >= 5;
+	const lightTheme = useSelector(state => state.lightTheme);
+	const [popupVisible, setPopupVisble] = useState(false);
+
+	const onClick = () => {
+		copyToClipboard();
+		setPopupVisble(true);
+		setTimeout(() => {
+			setPopupVisble(false);
+		}, 5000)
+	}
+
+	const copyToClipboard = () => {
+		const str = "# Games: 5, # Questions: 5, % Correct: 5, Today's Score: 5"
+		navigator.clipboard.writeText(str);
+	}
+
 	return (
-		<button class="button is-success" style={style}>
-			<span style={{ marginRight: "5px" }}>Share</span>
-			<BsShareFill color="white" style={{ marginLeft: "5px" }}/>
-		</button>
+		<Fragment>
+			<button class="button is-success" style={style} onClick={onClick}>
+				<span style={{ marginRight: "5px" }}>Share</span>
+				<BsShareFill color="white" style={{ marginLeft: "5px" }}/>
+			</button>
+			{ popupVisible == true ? <ClipboardPopup/> : null }
+		</Fragment>
+	)
+}
+
+function ClipboardPopup() {
+	const lightTheme = useSelector(state => state.lightTheme)
+	const backgroundColor = lightTheme ? SPACE_GREY : WHITE;
+	const textColor = lightTheme ? WHITE : SPACE_GREY;
+	return (
+		<div style={{ backgroundColor, position: "absolute", top: "20px", padding: "10px", fontFamily: "Avenir Light", color: textColor, borderRadius: "5px"}}>
+			Copied Results to Clipboard
+		</div>
 	)
 }
 

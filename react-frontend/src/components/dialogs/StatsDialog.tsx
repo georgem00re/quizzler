@@ -6,6 +6,7 @@ import ShareButton from "../buttons/ShareButton.tsx";
 import { WHITE, SPACE_GREY } from "../../constants/colours.js";
 import LineDivider from "../misc/LineDivider.tsx";
 import Timer from "../misc/Timer.tsx";
+import ScoreLabel from "../misc/ScoreLabel.tsx";
 
 export default function HelpDialog() {
 
@@ -34,6 +35,7 @@ export default function HelpDialog() {
 							<StatsCell value={10} title={"Questions #"}/>
 							<StatsCell value={10} title={"Correct %"}/>
 						</div>
+						<ScoreLabel/>
 						<Timer/>
 						<div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
 							<ShareButton/>

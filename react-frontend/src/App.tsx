@@ -1,4 +1,3 @@
-import ScoreDialog from "./components/dialogs/ScoreDialog.tsx";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { getQuiz } from "./services/data.service.ts";
@@ -20,7 +19,6 @@ function App() {
   const helpDialogOpen = useSelector(state => state.helpDialogOpen);
   const answeredQuestions = useSelector(state => state.answeredQuestions)
   const score = useSelector(state => state.score);
-  const [scoreDialogActive, setScoreDialogActive] = useState(false);
   const lightTheme = useSelector(state => state.lightTheme);
   const backgroundColor = lightTheme ? WHITE : SPACE_GREY;
 
@@ -37,7 +35,6 @@ function App() {
   if (quiz == null) return <LoadingIndicator/>
   return (
     <Canvas>
-      <ScoreDialog active={answeredQuestions.length == quiz.length ? true : false} onDismiss={() => setScoreDialogActive(false)}/>
       <HelpDialog/>
       <StatsDialog/>
       <NavigationBar/>
