@@ -1,25 +1,17 @@
 
-import { describe, test, assert, vi, expect } from "vitest";
-import { render, screen, waitFor, fireEvent } from '@testing-library/react';
-import { Provider } from "react-redux";
-import store from "../state/store.ts"
-import { getQuiz } from "../services/data.service.ts";
-import axios from "axios";
-import App from "../App.tsx";
-import { MOCK_QUIZ } from "./mocks/quiz.ts";
+import { describe, test, expect, beforeEach } from "vitest";
+import { screen, waitFor, fireEvent } from '@testing-library/react';
 import { TEST_ID_STATS_BUTTON } from "../components/buttons/StatsButton.tsx";
 import { TEST_ID_STATS_DIALOG, TEST_ID_STATS_DIALOG_DISMISS } from "../components/dialogs/StatsDialog.tsx";
+import { renderApp } from "./helpers/renderApp.tsx";
 
 describe("StatsDialog", () => {
-	test("StatsDialog is displayed when StatsButton is clicked", async () => {
-		const spy = vi.spyOn(axios, "get").mockResolvedValue({ data: MOCK_QUIZ })
 
-		// render App component
-    	render(
-    		<Provider store={store}>
-    			<App/>
-    		</Provider>
-    	);
+	beforeEach(() => {
+		renderApp();
+	})
+
+	test("Visibility of StatsDialog is toggled when StatsButton is clicked", async () => {
 
     	// wait for StatsButton to be rendered
     	const StatsButton = await waitFor(() => screen.getByTestId(TEST_ID_STATS_BUTTON));

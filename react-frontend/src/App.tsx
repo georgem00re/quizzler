@@ -31,7 +31,6 @@ function App() {
   const questions = quiz?.map((element, index) => {
     return <QuestionContainer key={index} question={element.question} correctAnswer={element.correctAnswer} incorrectAnswers={element.incorrectAnswers} answered={answeredQuestions.includes(index) ? true : false} questionNumber={index}/>
   });
-  console.log(quiz);
 
   if (quiz == null) return <LoadingIndicator/>
   return (
