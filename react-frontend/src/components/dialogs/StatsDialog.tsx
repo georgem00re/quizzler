@@ -31,9 +31,9 @@ export default function HelpDialog() {
 							<button onClick={dismiss} class="delete" aria-label="close"></button>
 						</div>
 						<div style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "row" }}>
-							<StatsCell value={10} title={"Games #"}/>
-							<StatsCell value={10} title={"Questions #"}/>
-							<StatsCell value={10} title={"Correct %"}/>
+							<StatsCell value={0} title={"Games #"}/>
+							<StatsCell value={0} title={"Questions #"}/>
+							<StatsCell value={0} title={"Correct %"}/>
 						</div>
 						<ScoreLabel/>
 						<Timer/>
