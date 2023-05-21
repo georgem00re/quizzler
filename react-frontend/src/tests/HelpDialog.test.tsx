@@ -11,7 +11,7 @@ describe("HelpDialog", () => {
 		renderApp()
 	})
 
-	test("Visibility of HelpDialog is toggled when HelpButton is clicked", async () => {
+	test("HelpDialog is visible when HelpButton is clicked and NOT visible when dismissed", async () => {
 
     	// wait for HelpButton to be rendered
     	const HelpButton = await waitFor(() => screen.getByTestId(TEST_ID_HELP_BUTTON));

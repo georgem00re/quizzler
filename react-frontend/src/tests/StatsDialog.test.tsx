@@ -11,7 +11,7 @@ describe("StatsDialog", () => {
 		renderApp();
 	})
 
-	test("Visibility of StatsDialog is toggled when StatsButton is clicked", async () => {
+	test("StatsDialog is visible when StatsButton is clicked and NOT visible when dismissed", async () => {
 
     	// wait for StatsButton to be rendered
     	const StatsButton = await waitFor(() => screen.getByTestId(TEST_ID_STATS_BUTTON));
