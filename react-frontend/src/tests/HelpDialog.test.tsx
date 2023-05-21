@@ -14,23 +14,23 @@ describe("HelpDialog", () => {
 	test("HelpDialog is visible when HelpButton is clicked and NOT visible when dismissed", async () => {
 
     	// wait for HelpButton to be rendered
-    	const HelpButton = await waitFor(() => screen.getByTestId(TEST_ID_HELP_BUTTON));
+    	const helpButton = await waitFor(() => screen.getByTestId(TEST_ID_HELP_BUTTON));
 
     	// assert that HelpDialog is NOT visible
-    	const HelpDialog = screen.getByTestId(TEST_ID_HELP_DIALOG)
-    	expect(HelpDialog.classList.contains("is-active")).toBe(false);
+    	const helpDialog = screen.getByTestId(TEST_ID_HELP_DIALOG)
+    	expect(helpDialog.classList.contains("is-active")).toBe(false);
 
     	// click HelpButton
-    	fireEvent.click(HelpButton)
+    	fireEvent.click(helpButton)
 
     	// assert that HelpDialog is visible
-    	expect(HelpDialog.classList.contains("is-active")).toBe(true);
+    	expect(helpDialog.classList.contains("is-active")).toBe(true);
 
     	// click dismiss button
     	const dismissButton = screen.getByTestId(TEST_ID_HELP_DIALOG_DISMISS)
     	fireEvent.click(dismissButton);
 
     	// assert that HelpDialog is NOT visible
-    	expect(HelpDialog.classList.contains("is-active")).toBe(false);
+    	expect(helpDialog.classList.contains("is-active")).toBe(false);
 	})
 })

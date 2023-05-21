@@ -17,42 +17,42 @@ describe("StatsDialog", () => {
 	test("StatsDialog is visible when StatsButton is clicked and NOT visible when dismissed", async () => {
 
     	// wait for StatsButton to be rendered
-    	const StatsButton = await waitFor(() => screen.getByTestId(TEST_ID_STATS_BUTTON));
+    	const statsButton = await waitFor(() => screen.getByTestId(TEST_ID_STATS_BUTTON));
 
     	// assert that StatsDialog is NOT visible
-    	const StatsDialog = screen.getByTestId(TEST_ID_STATS_DIALOG)
-    	expect(StatsDialog.classList.contains("is-active")).toBe(false);
+    	const statsDialog = screen.getByTestId(TEST_ID_STATS_DIALOG)
+    	expect(statsDialog.classList.contains("is-active")).toBe(false);
 
     	// click StatsButton
-    	fireEvent.click(StatsButton)
+    	fireEvent.click(statsButton)
 
     	// assert that StatsDialog is visible
-    	expect(StatsDialog.classList.contains("is-active")).toBe(true);
+    	expect(statsDialog.classList.contains("is-active")).toBe(true);
 
     	// click dismiss button
     	const dismissButton = screen.getByTestId(TEST_ID_STATS_DIALOG_DISMISS)
     	fireEvent.click(dismissButton);
 
     	// assert that StatsDialog is NOT visible
-    	expect(StatsDialog.classList.contains("is-active")).toBe(false);
+    	expect(statsDialog.classList.contains("is-active")).toBe(false);
 	})
 
 	test.skip("StatsDialog is visible immediately after a quiz is completed", async () => {
 
 		// wait for QuestionContainers to be rendered
-		const QuestionContainers = await waitFor(() => screen.getAllByTestId(TEST_ID_QUESTION_CONTAINER));
+		const questionContainers = await waitFor(() => screen.getAllByTestId(TEST_ID_QUESTION_CONTAINER));
 
 		// assert that StatsDialog is NOT visible
-		const StatsDialog = screen.getByTestId(TEST_ID_STATS_DIALOG)
-    	expect(StatsDialog.classList.contains("is-active")).toBe(false);
+		const statsDialog = screen.getByTestId(TEST_ID_STATS_DIALOG)
+    	expect(statsDialog.classList.contains("is-active")).toBe(false);
 
     	// loop over each question and select the first answer
-    	for (const question of QuestionContainers) {
+    	for (const question of questionContainers) {
     		const answerButton = within(question).getAllByTestId(TEST_ID_ANSWER_BUTTON)[0];
     		fireEvent.click(answerButton);
     	}
 
     	// assert that StatsDialog is visible
-    	expect(StatsDialog.classList.contains("is-active")).toBe(true);
+    	expect(statsDialog.classList.contains("is-active")).toBe(true);
 	})
 })
