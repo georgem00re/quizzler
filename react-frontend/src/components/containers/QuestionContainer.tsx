@@ -6,6 +6,8 @@ import AnswerButton from "../buttons/AnswerButton.tsx";
 import { BORDER_GREY, GREY } from "../../constants/colours.js";
 import { useSelector } from "react-redux";
 
+export const TEST_ID_QUESTION_CONTAINER = "question-container";
+
 interface QuestionContainerProps {
 	question: string,
 	correctAnswer: string,
@@ -23,7 +25,7 @@ export default function QuestionContainer({ question, correctAnswer, incorrectAn
 	})
 
 	return (
-		<div style={{...style, borderColor}}>
+		<div style={{...style, borderColor}} data-testid={TEST_ID_QUESTION_CONTAINER}>
 			<QuestionHeader text={question}/>
 			<AnswerContainer>
 				{answerButtons}
