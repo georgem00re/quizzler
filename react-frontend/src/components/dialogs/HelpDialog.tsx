@@ -4,6 +4,9 @@ import LineDivider from "../misc/LineDivider.tsx";
 import { closeHelpDialog } from "../../state/actions.ts";
 import { WHITE, SPACE_GREY } from "../../constants/colours.js";
 
+export const TEST_ID_HELP_DIALOG = "help-dialog";
+export const TEST_ID_HELP_DIALOG_DISMISS = "help-dialog-dismiss"
+
 export default function HelpDialog() {
 
 	const dispatch = useDispatch();
@@ -19,13 +22,13 @@ export default function HelpDialog() {
 	}
 
 	return (
-		<div class={className}>
+		<div class={className} data-testid={TEST_ID_HELP_DIALOG}>
 			<div class="modal-background" style={modalBackground}>
 				<div class="modal-content">
 					<div class="box" style={{ backgroundColor }}>
 						<div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
 							<h1 style={{ fontFamily: "Avenir Heavy", color: textColor, fontSize: "20px" }}>How to Play</h1>
-							<button onClick={dismiss} class="delete" aria-label="close"></button>
+							<button onClick={dismiss} class="delete" aria-label="close" data-testid={TEST_ID_HELP_DIALOG_DISMISS}></button>
 						</div>
 						<p style={{ marginTop: "10px", marginBottom: "10px", fontFamily: "Avenir", color: textColor }}>Quizzler provides users with a daily, 5-question quiz. Answer all the questions and share the results with your friends. The quiz is refreshed at midnight.</p>
 						<h2 style={{ fontFamily: "Avenir", color: textColor }}> Created By: <a style={{ color: linkColor }} href="https://github.com/georgem00re">George Moore</a></h2>
