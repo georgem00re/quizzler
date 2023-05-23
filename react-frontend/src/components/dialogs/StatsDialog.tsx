@@ -8,6 +8,9 @@ import LineDivider from "../misc/LineDivider.tsx";
 import Timer from "../misc/Timer.tsx";
 import ScoreLabel from "../misc/ScoreLabel.tsx";
 
+export const TEST_ID_STATS_DIALOG = "stats-dialog";
+export const TEST_ID_STATS_DIALOG_DISMISS = "stats-dialog-dismiss"
+
 export default function HelpDialog() {
 
 	const dispatch = useDispatch();
@@ -22,13 +25,13 @@ export default function HelpDialog() {
 	}
 
 	return (
-		<div class={className}>
+		<div class={className} data-testid={TEST_ID_STATS_DIALOG}>
 			<div class="modal-background" style={modalBackground}>
 				<div class="modal-content" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
 					<div class="box" style={{ width: "fit-content", backgroundColor }}>
 						<div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
 							<h1 style={{ fontFamily: "Avenir Heavy", color: textColor, fontSize: "20px" }}>Statistics</h1>
-							<button onClick={dismiss} class="delete" aria-label="close"></button>
+							<button onClick={dismiss} class="delete" aria-label="close" data-testid={TEST_ID_STATS_DIALOG_DISMISS}></button>
 						</div>
 						<div style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "row" }}>
 							<StatsCell value={0} title={"Games #"}/>
