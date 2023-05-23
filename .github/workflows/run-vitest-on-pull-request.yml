@@ -1,17 +1,15 @@
 name: run-vitest-on-pull-request
-on:
-  pull_request:
-    paths:
-      - react-frontend/src/**
+on: [push, pull_request]
+
 jobs:
-  build-for-test
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.3.0
       - uses: actions/setup-node@v3.6.0
         with:
           node-version: 18
-          cache: "npm"
-          cache-dependency-paths: react-frontend/package-lock.json
       - run: npm ci
-      - run: npm run build
+        working-directory: ./react-frontend
+      - run: npm run test
+        working-directory: ./react-frontend
