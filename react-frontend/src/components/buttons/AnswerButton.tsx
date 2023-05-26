@@ -7,6 +7,8 @@ import { RxCross2 } from "react-icons/rx";
 import { FiCheck } from "react-icons/fi";
 import { WHITE, SPACE_GREY, LIGHT_GREY, BORDER_GREY, GREY, DARK_GREEN, DARK_RED, LIGHT_GREEN, LIGHT_RED } from "../../constants/colours.js";
 
+export const TEST_ID_ANSWER_BUTTON = "answer-button"
+
 interface AnswerButtonProps {
 	text: string,
 	correct: bool,
@@ -32,7 +34,7 @@ export default function AnswerButton({ text, correct, index, answered, questionN
 	}
 
 	return (
-		<button onClick={() => onClick()} style={{...style, backgroundColor, color, borderColor}} disabled={answered}>
+		<button onClick={() => onClick()} style={{...style, backgroundColor, color, borderColor}} disabled={answered} data-testid={TEST_ID_ANSWER_BUTTON}>
 			<LetterIcon index={index} color={color}/>
 			{text}
 			{ selected ? correct ? <FiCheck style={{ marginLeft: "15px" }} color={color}/> : <RxCross2 style={{ marginLeft: "15px" }} color={color}/> : null}
