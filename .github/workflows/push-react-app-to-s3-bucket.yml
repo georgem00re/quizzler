@@ -1,0 +1,19 @@
+name: run-eslint-on-pull-request
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3.3.0
+      - uses: actions/setup-node@v3.6.0
+        with:
+          node-version: 18
+      - run: npm ci
+        working-directory: ./react-frontend
+      - run: npm run build
+        working-directory: ./react-frontend
+      - run: aws s3 sync ./dist/ s3://dev-tambola --delete
