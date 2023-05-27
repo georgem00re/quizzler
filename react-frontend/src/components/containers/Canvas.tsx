@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from "react";
 
-export default function Canvas({ children }: PropsWithChildren<>) {
+export default function Canvas({ children }: PropsWithChildren) {
   return <div style={style}>{children}</div>;
 }
 

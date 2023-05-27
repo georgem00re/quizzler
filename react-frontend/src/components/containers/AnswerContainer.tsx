@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from "react";
 
-export default function AnswerContainer({ children }: PropsWithChildren<>) {
+export default function AnswerContainer({ children }: PropsWithChildren) {
   return <div style={style}>{children}</div>;
 }
 
