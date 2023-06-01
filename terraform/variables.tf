@@ -14,3 +14,9 @@ variable "access_control_list" {
 	description = "Manages access to the bucket"
 	default = "private"
 }
+
+variable "aws_profile" {
+	type = string
+	description = "The AWS profile with which resources will be provisioned"
+	default = "default"
+}
