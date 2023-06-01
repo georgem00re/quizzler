@@ -12,11 +12,17 @@ variable "bucket_prefix" {
 variable "access_control_list" {
 	type = string
 	description = "Manages access to the bucket"
-	default = "private"
+	default = "public-read"
 }
 
 variable "aws_profile" {
 	type = string
 	description = "The AWS profile with which resources will be provisioned"
 	default = "default"
+}
+
+variable "bucket_name" {
+	type = string
+	description = "The name of the S3 bucket"
+	default = "quizzler-react-frontend"
 }
