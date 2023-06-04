@@ -6,30 +6,14 @@ provider "aws" {
 
 resource "aws_s3_bucket" "my-s3-bucket" {
 	bucket = var.bucket_name
-  bucket_prefix = var.bucket_prefix
-  acl = var.access_control_list
-  policy = <<EOF
-  {
-  	"Id": "bucket_policy_site",
-  	"Version": "2012-10-17",
-  	"Statement": [
-  		{
-  			"Sid": "bucket_policy_site_main",
-  			"Action": [
-  				"s3:getObject"
-  			],
-  			"Effect": "Allow",
-  			"Resource": "arn:aws:s3:::${var.bucket_name}/*",
-  			"Principal": "*"
-  		}
-  	]
-  }
-  EOF
+    bucket_prefix = var.bucket_prefix
+    acl = var.access_control_list
+    policy = var.s3_policy
 
-  website {
-  	index_document = "index.html"
-  	error_document = "index.html"
-  }
+    website {
+        index_document = "index.html"
+        error_document = "index.html"
+    }
 }
 
 output "website_domain" {

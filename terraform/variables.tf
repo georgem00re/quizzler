@@ -26,3 +26,25 @@ variable "bucket_name" {
 	description = "The name of the S3 bucket"
 	default = "quizzler-react-frontend"
 }
+
+variable "s3_policy" {
+	type = string
+	description = "The access policy of the S3 bucket"
+	default = <<EOF
+  {
+  	"Id": "bucket_policy_site",
+  	"Version": "2012-10-17",
+  	"Statement": [
+  		{
+  			"Sid": "bucket_policy_site_main",
+  			"Action": [
+  				"s3:getObject"
+  			],
+  			"Effect": "Allow",
+  			"Resource": "arn:aws:s3:::${var.bucket_name}/*",
+  			"Principal": "*"
+  		}
+  	]
+  }
+  EOF
+}
