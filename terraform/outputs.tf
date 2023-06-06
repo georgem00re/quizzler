@@ -1,12 +1,12 @@
 
 output "s3_bucket_id" {
-	value = aws_s3_bucket.my-s3-bucket.id
+	value = aws_s3_bucket.s3_bucket.id
 }
 
 output "s3_bucket_region" {
-	value = aws_s3_bucket.my-s3-bucket.region
+	value = aws_s3_bucket.s3_bucket.region
 }
 
 output "s3_bucket_arn" {
-	value = aws_s3_bucket.my-s3-bucket.arn
+	value = aws_s3_bucket.s3_bucket.arn
 }

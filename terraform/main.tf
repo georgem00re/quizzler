@@ -4,22 +4,32 @@ provider "aws" {
 	profile = var.aws_profile
 }
 
-resource "aws_s3_bucket" "my-s3-bucket" {
-	bucket = var.bucket_name
+resource "aws_s3_bucket" "s3_bucket" {
     bucket_prefix = var.bucket_prefix
-    acl = var.access_control_list
-    policy = var.s3_policy
+}
 
-    website {
-        index_document = "index.html"
-        error_document = "index.html"
+resource "aws_s3_bucket_acl" "s3_bucket_acl" {
+    bucket = aws_s3_bucket.s3_bucket.id
+    acl = "public-read"
+}
+
+resource "aws_s3_bucket_website_configuration" "s3_bucket_website_configuration" {
+    bucket = aws_s3_bucket.s3_bucket.id
+
+    index_document {
+        suffix = "index.html"
     }
 }
 
-output "website_domain" {
-	value = "${aws_s3_bucket.react_bucket.website_domain}"
-}
-
-output "website_endpoint" {
-	value = "${aws_s3_bucket.react_bucket.website_endpoint}"
+resource "aws_s3_bucket_policy" "s3_bucket_policy" {
+    bucket = aws_s3_bucket.s3_bucket.id
+    policy = jsonencode({
+        "Version": "2012-10-17",
+        "Statement": [{
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "${aws_s3_bucket.s3_bucket.arn}/*"
+        }]
+    })
 }
