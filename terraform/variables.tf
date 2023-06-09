@@ -14,9 +14,3 @@ variable "aws_profile" {
 	description = "The AWS profile with which resources will be provisioned"
 	default = "default"
 }
-
-# variable "bucket_name" {
-# 	type = string
-# 	description = "The name of the S3 bucket"
-# 	default = "quizzler-react-frontend"
-# }
