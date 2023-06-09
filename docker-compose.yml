@@ -31,7 +31,3 @@ services:
       - ${PWD}/nodejs-backend/package-lock.json:/app/package-lock.json
     environment:
       NODEJS_BACKEND_PORT: ${NODEJS_BACKEND_PORT}
-  localstack:
-    image: localstack/localstack:latest
-    ports:
-      - "${LOCALSTACK_PORT}:4566"
