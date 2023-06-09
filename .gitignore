@@ -164,3 +164,8 @@ cython_debug/
 
 # IntelliJ
 .idea/
+
+# Terraform
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
