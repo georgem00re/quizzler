@@ -13,7 +13,6 @@ export interface Question {
   question: string;
   correctAnswer: string;
   incorrectAnswers: Array<string>;
-
 }
 
 export interface State {
@@ -23,7 +22,7 @@ export interface State {
   helpDialogOpen: boolean;
   settingsDialogOpen: boolean;
   lightTheme: boolean;
-  statsDialogOpen: boolean
+  statsDialogOpen: boolean;
 }
 
 const reducers = combineReducers({

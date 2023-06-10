@@ -1,11 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import {
-  WHITE,
-  SPACE_GREY,
-  BORDER_GREY,
-  GREY,
-} from "../../constants/colours";
+import { WHITE, SPACE_GREY, BORDER_GREY, GREY } from "../../constants/colours";
 import { State } from "../../state/store";
 
 interface QuestionFooterProps {

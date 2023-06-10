@@ -15,7 +15,7 @@ export default function HelpDialog() {
   const className = isActive ? "modal is-active" : "modal";
   const textColor = lightTheme ? SPACE_GREY : WHITE;
   const backgroundColor = lightTheme ? WHITE : SPACE_GREY;
-  const linkColor = "#98C3E2"
+  const linkColor = "#98C3E2";
 
   const dismiss = () => {
     dispatch(closeHelpDialog());

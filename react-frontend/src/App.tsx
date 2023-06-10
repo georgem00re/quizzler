@@ -15,7 +15,9 @@ import { State } from "./state/store";
 function App() {
   const dispatch = useDispatch();
   const quiz = useSelector((state: State) => state.quiz);
-  const answeredQuestions = useSelector((state: State) => state.answeredQuestions);
+  const answeredQuestions = useSelector(
+    (state: State) => state.answeredQuestions
+  );
   const lightTheme = useSelector((state: State) => state.lightTheme);
   const backgroundColor = lightTheme ? WHITE : SPACE_GREY;
 

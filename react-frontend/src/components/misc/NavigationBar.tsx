@@ -40,10 +40,10 @@ const style = {
   height: "60px",
   justifyContent: "space-between",
   alignItems: "center",
-  borderBottomStyle: "solid" as "solid",
+  borderBottomStyle: "solid" as const,
   borderWidth: "1px",
   borderColor: "#CFCFCF",
-  flexDirection: "row" as "row",
+  flexDirection: "row" as const,
 };
 
 const header = {

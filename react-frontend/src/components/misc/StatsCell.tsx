@@ -38,6 +38,6 @@ const style = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  flexDirection: "column" as "column",
+  flexDirection: "column" as const,
   margin: "20px",
 };

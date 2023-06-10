@@ -92,6 +92,6 @@ const style = {
   margin: "5px 0px 5px 0px",
   display: "flex",
   alignItems: "center",
-  boxSizing: "border-box" as "border-box",
+  boxSizing: "border-box" as const,
   width: "100%",
 };

@@ -49,6 +49,6 @@ export default function Timer() {
 const style = {
   fontFamily: "Avenir Black",
   fontSize: "30px",
-  textAlign: "center" as "center",
+  textAlign: "center" as const,
   margin: "0px",
 };

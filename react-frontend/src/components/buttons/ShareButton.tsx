@@ -60,7 +60,7 @@ const style = {
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  flexDirection: "row" as "row",
+  flexDirection: "row" as const,
   paddingLeft: "20px",
   paddingRight: "20px",
   borderRadius: "5px",

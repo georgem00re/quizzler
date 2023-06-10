@@ -7,7 +7,9 @@ export default function ScoreLabel() {
   const lightTheme = useSelector((state: State) => state.lightTheme);
   const textColor = lightTheme ? SPACE_GREY : WHITE;
   const borderColor = lightTheme ? SPACE_GREY : WHITE;
-  const answeredQuestions = useSelector((state: State) => state.answeredQuestions);
+  const answeredQuestions = useSelector(
+    (state: State) => state.answeredQuestions
+  );
   const isQuizComplete = answeredQuestions.length >= 5;
   const score = useSelector((state: State) => state.score);
   console.log(score);
@@ -44,6 +46,6 @@ const style = {
   alignItems: "center",
   fontFamily: "Avenir Black",
   marginTop: "5px",
-  textAlign: "center" as "center",
+  textAlign: "center" as const,
   fontSize: "20px",
 };

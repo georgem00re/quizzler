@@ -1,7 +1,6 @@
-
 interface Action {
   payload: object;
-  type: string
+  type: string;
 }
 
 export function quizReducer(state = null, action: Action) {
