@@ -1,20 +1,21 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import LineDivider from "../misc/LineDivider.tsx";
-import { closeHelpDialog } from "../../state/actions.ts";
-import { WHITE, SPACE_GREY } from "../../constants/colours.js";
+import LineDivider from "../misc/LineDivider";
+import { closeHelpDialog } from "../../state/actions";
+import { WHITE, SPACE_GREY } from "../../constants/colours";
+import { State } from "../../state/store";
 
 export const TEST_ID_HELP_DIALOG = "help-dialog";
 export const TEST_ID_HELP_DIALOG_DISMISS = "help-dialog-dismiss";
 
 export default function HelpDialog() {
   const dispatch = useDispatch();
-  const isActive = useSelector((state) => state.helpDialogOpen);
-  const lightTheme = useSelector((state) => state.lightTheme);
+  const isActive = useSelector((state: State) => state.helpDialogOpen);
+  const lightTheme = useSelector((state: State) => state.lightTheme);
   const className = isActive ? "modal is-active" : "modal";
   const textColor = lightTheme ? SPACE_GREY : WHITE;
   const backgroundColor = lightTheme ? WHITE : SPACE_GREY;
-  const linkColor = lightTheme ? null : "#98C3E2";
+  const linkColor = "#98C3E2"
 
   const dismiss = () => {
     dispatch(closeHelpDialog());

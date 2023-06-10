@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { SPACE_GREY, WHITE } from "../../constants/colours.js";
+import { SPACE_GREY, WHITE } from "../../constants/colours";
+import { State } from "../../state/store";
 
 interface StatsCellProps {
   value: number;
@@ -8,7 +9,7 @@ interface StatsCellProps {
 }
 
 export default function StatsCell(props: StatsCellProps) {
-  const lightTheme = useSelector((state) => state.lightTheme);
+  const lightTheme = useSelector((state: State) => state.lightTheme);
   const textColor = lightTheme ? SPACE_GREY : WHITE;
   return (
     <div style={{ ...style, color: textColor }}>
@@ -37,6 +38,6 @@ const style = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  flexDirection: "column",
+  flexDirection: "column" as "column",
   margin: "20px",
 };

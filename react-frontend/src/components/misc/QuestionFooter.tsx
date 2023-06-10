@@ -5,10 +5,11 @@ import {
   SPACE_GREY,
   BORDER_GREY,
   GREY,
-} from "../../constants/colours.js";
+} from "../../constants/colours";
+import { State } from "../../state/store";
 
 interface QuestionFooterProps {
-  correctAnswer: boolean;
+  correctAnswer: string;
   answered: boolean;
 }
 
@@ -16,7 +17,7 @@ export default function QuestionFooter({
   correctAnswer,
   answered,
 }: QuestionFooterProps) {
-  const lightTheme = useSelector((state) => state.lightTheme);
+  const lightTheme = useSelector((state: State) => state.lightTheme);
   const text =
     answered == true
       ? `Correct Answer: ${correctAnswer}`

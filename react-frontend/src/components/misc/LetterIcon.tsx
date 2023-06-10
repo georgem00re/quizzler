@@ -1,7 +1,8 @@
 import React from "react";
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 import { useSelector } from "react-redux";
-import { SPACE_GREY, WHITE } from "../../constants/colours.js";
+import { SPACE_GREY, WHITE } from "../../constants/colours";
+import { State } from "../../state/store";
 
 interface LetterIconProps {
   color: string;
@@ -9,7 +10,7 @@ interface LetterIconProps {
 }
 
 export default function LetterIcon({ color, index }: LetterIconProps) {
-  const lightTheme = useSelector((state) => state.lightTheme);
+  const lightTheme = useSelector((state: State) => state.lightTheme);
   const textColor = lightTheme ? WHITE : SPACE_GREY;
   return (
     <div style={{ ...style, backgroundColor: color, color: textColor }}>

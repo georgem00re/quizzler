@@ -1,10 +1,11 @@
 import React from "react";
-import QuestionFooter from "../misc/QuestionFooter.tsx";
-import QuestionHeader from "../misc/QuestionHeader.tsx";
-import AnswerContainer from "../containers/AnswerContainer.tsx";
-import AnswerButton from "../buttons/AnswerButton.tsx";
-import { BORDER_GREY, GREY } from "../../constants/colours.js";
+import QuestionFooter from "../misc/QuestionFooter";
+import QuestionHeader from "../misc/QuestionHeader";
+import AnswerContainer from "../containers/AnswerContainer";
+import AnswerButton from "../buttons/AnswerButton";
+import { BORDER_GREY, GREY } from "../../constants/colours";
 import { useSelector } from "react-redux";
+import { State } from "../../state/store";
 
 export const TEST_ID_QUESTION_CONTAINER = "question-container";
 
@@ -12,7 +13,7 @@ interface QuestionContainerProps {
   question: string;
   correctAnswer: string;
   incorrectAnswers: string[];
-  answered: bool;
+  answered: boolean;
   questionNumber: number;
 }
 
@@ -23,7 +24,7 @@ export default function QuestionContainer({
   answered,
   questionNumber,
 }: QuestionContainerProps) {
-  const lightTheme = useSelector((state) => state.lightTheme);
+  const lightTheme = useSelector((state: State) => state.lightTheme);
   const borderColor = lightTheme ? BORDER_GREY : GREY;
 
   const answerButtons = [...incorrectAnswers, correctAnswer].map(

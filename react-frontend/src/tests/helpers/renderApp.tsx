@@ -1,9 +1,9 @@
 import React from "react";
-import store from "../../state/store.ts";
+import store from "../../state/store";
 import { Provider } from "react-redux";
-import { MOCK_QUIZ } from "../mocks/quiz.ts";
+import { MOCK_QUIZ } from "../mocks/quiz";
 import axios from "axios";
-import App from "../../App.tsx";
+import App from "../../App";
 import { vi } from "vitest";
 import { render } from "@testing-library/react";
 

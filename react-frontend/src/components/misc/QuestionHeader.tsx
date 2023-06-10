@@ -5,14 +5,15 @@ import {
   SPACE_GREY,
   GREY,
   BORDER_GREY,
-} from "../../constants/colours.js";
+} from "../../constants/colours";
+import { State } from "../../state/store";
 
 interface QuestionHeaderProps {
   text: string;
 }
 
 export default function QuestionHeader({ text }: QuestionHeaderProps) {
-  const lightTheme = useSelector((state) => state.lightTheme);
+  const lightTheme = useSelector((state: State) => state.lightTheme);
   const backgroundColor = lightTheme ? WHITE : SPACE_GREY;
   const textColor = lightTheme ? SPACE_GREY : WHITE;
   const borderColor = lightTheme ? BORDER_GREY : GREY;

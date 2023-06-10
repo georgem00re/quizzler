@@ -1,10 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { SPACE_GREY, WHITE } from "../../constants/colours.js";
+import { SPACE_GREY, WHITE } from "../../constants/colours";
 import { useState, useEffect } from "react";
+import { State } from "../../state/store";
 
 export default function Timer() {
-  const lightTheme = useSelector((state) => state.lightTheme);
+  const lightTheme = useSelector((state: State) => state.lightTheme);
   const textColor = lightTheme ? SPACE_GREY : WHITE;
   const [time, setTime] = useState("??:??:??");
 
@@ -48,6 +49,6 @@ export default function Timer() {
 const style = {
   fontFamily: "Avenir Black",
   fontSize: "30px",
-  textAlign: "center",
+  textAlign: "center" as "center",
   margin: "0px",
 };
