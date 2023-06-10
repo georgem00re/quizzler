@@ -14,3 +14,15 @@ variable "aws_profile" {
 	description = "The AWS profile with which resources will be provisioned"
 	default = "default"
 }
+
+variable "domain_name" {
+	type = string
+	description = "The domain name of the Quizzler React application"
+	default = "quizzler.io"
+}
+
+variable "time_to_live" {
+	type = number
+	description = "The amount of time, in seconds, that you want DNS recursive resolvers to cache information about this record"
+	default = 300
+}
