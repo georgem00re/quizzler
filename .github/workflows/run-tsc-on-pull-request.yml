@@ -1,0 +1,15 @@
+name: run-tsc-on-pull-request
+on: [push, pull_request]
+
+jobs:
+  clean-install-and-compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3.3.0
+      - uses: actions/setup-node@v3.6.0
+        with:
+          node-version: 18
+      - run: npm ci
+        working-directory: ./react-frontend
+      - run: npx tsc
+        working-directory: ./react-frontend
