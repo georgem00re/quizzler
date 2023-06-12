@@ -1,10 +1,10 @@
 
 provider "aws" {
-	region = var.aws_region
-	profile = var.aws_profile
+	region = "eu-west-2"
+	profile = "default"
 }
 
 module "s3_bucket" {
 	source = "./modules/s3_bucket"
-	bucket_prefix = "quizzler"
+	bucket_prefix = "quizzler_react_app_"
 }
