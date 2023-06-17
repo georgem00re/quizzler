@@ -29,7 +29,10 @@ resource "aws_s3_bucket_public_access_block" "s3_bucket_public_access_block" {
 resource "aws_s3_bucket_acl" "s3_bucket_acl" {
     bucket = aws_s3_bucket.s3_bucket.id
     acl = "public-read"
-    depends_on = [aws_s3_bucket_public_access_block.s3_bucket_public_access_block]
+    depends_on = [
+        aws_s3_bucket_public_access_block.s3_bucket_public_access_block,
+        aws_s3_bucket_ownership_controls.s3_bucket_ownership_controls
+    ]
 }
 
 resource "aws_s3_bucket_policy" "s3_bucket_policy" {
@@ -43,4 +46,5 @@ resource "aws_s3_bucket_policy" "s3_bucket_policy" {
             "Resource": "${aws_s3_bucket.s3_bucket.arn}/*"
         }]
     })
+    depends_on = [aws_s3_bucket_acl.s3_bucket_acl]
 }
