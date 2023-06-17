@@ -1,5 +1,5 @@
 
-resource "aws_iam_role" "aws_iam_role" {
+resource "aws_iam_role" "this" {
 	name = var.name
 	description = var.description
 	assume_role_policy = jsonencode({
@@ -14,7 +14,7 @@ resource "aws_iam_role" "aws_iam_role" {
 	})
 }
 
-resource "aws_iam_policy" "aws_iam_policy" {
+resource "aws_iam_policy" "this" {
 	name = "${var.name}_policy"
 	policy = jsonencode({
 		"Version": "2012-10-17",
@@ -26,7 +26,7 @@ resource "aws_iam_policy" "aws_iam_policy" {
 	})
 }
 
-resource "aws_iam_role_policy_attachment" "aws_iam_role_policy_attachment" {
-	role = aws_iam_role.aws_iam_role.name
-	policy_arn = aws_iam_policy.aws_iam_policy.arn
+resource "aws_iam_role_policy_attachment" "this" {
+	role = aws_iam_role.this.name
+	policy_arn = aws_iam_policy.this.arn
 }

@@ -1,4 +1,4 @@
 
-resource "aws_iam_user" "aws_iam_user" {
+resource "aws_iam_user" "this" {
 	name = var.name
 }
