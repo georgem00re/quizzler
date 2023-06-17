@@ -18,6 +18,14 @@ resource "aws_s3_bucket_public_access_block" "aws_s3_bucket_public_access_block"
     restrict_public_buckets = false
 }
 
+resource "aws_s3_bucket_website_configuration" "aws_s3_bucket_website_configuration" {
+    bucket = aws_s3_bucket.aws_s3_bucket.id
+
+    index_document {
+        suffix = "index.html"
+    }
+}
+
 resource "aws_s3_bucket_acl" "aws_s3_bucket_acl" {
     bucket = aws_s3_bucket.aws_s3_bucket.id
     acl = "public-read"
@@ -25,14 +33,6 @@ resource "aws_s3_bucket_acl" "aws_s3_bucket_acl" {
         aws_s3_bucket_public_access_block.aws_s3_bucket_public_access_block,
         aws_s3_bucket_ownership_controls.aws_s3_bucket_ownership_controls
     ]
-}
-
-resource "aws_s3_bucket_website_configuration" "aws_s3_bucket_website_configuration" {
-    bucket = aws_s3_bucket.aws_s3_bucket.id
-
-    index_document {
-        suffix = "index.html"
-    }
 }
 
 resource "aws_s3_bucket_policy" "aws_s3_bucket_policy" {
