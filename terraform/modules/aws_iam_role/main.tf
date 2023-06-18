@@ -5,7 +5,10 @@ resource "aws_iam_role" "this" {
 	assume_role_policy = jsonencode({
 		"Version": "2012-10-17",
 		"Statement": [{
-			"Action": "sts:AssumeRole",
+			"Action": [
+				"sts:AssumeRole",
+				"sts:TagSession"
+			],
 			"Principal": {
 				"AWS": var.assumeBy
 			},
