@@ -1,14 +1,14 @@
 import { describe, test, expect, beforeEach } from "vitest";
 import { screen, waitFor, fireEvent } from "@testing-library/react";
 import { within } from "@testing-library/dom";
-import { TEST_ID_STATS_BUTTON } from "../components/buttons/StatsButton.tsx";
+import { TEST_ID_STATS_BUTTON } from "../components/buttons/StatsButton";
 import {
   TEST_ID_STATS_DIALOG,
   TEST_ID_STATS_DIALOG_DISMISS,
-} from "../components/dialogs/StatsDialog.tsx";
-import { TEST_ID_QUESTION_CONTAINER } from "../components/containers/QuestionContainer.tsx";
-import { TEST_ID_ANSWER_BUTTON } from "../components/buttons/AnswerButton.tsx";
-import { renderApp } from "./helpers/renderApp.tsx";
+} from "../components/dialogs/StatsDialog";
+import { TEST_ID_QUESTION_CONTAINER } from "../components/containers/QuestionContainer";
+import { TEST_ID_ANSWER_BUTTON } from "../components/buttons/AnswerButton";
+import { renderApp } from "./helpers/renderApp";
 
 describe("StatsDialog", () => {
   beforeEach(() => {

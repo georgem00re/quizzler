@@ -5,8 +5,8 @@ import {
   answerQuestion,
   correctAnswer,
   incorrectAnswer,
-} from "../../state/actions.ts";
-import LetterIcon from "../misc/LetterIcon.tsx";
+} from "../../state/actions";
+import LetterIcon from "../misc/LetterIcon";
 import { RxCross2 } from "react-icons/rx";
 import { FiCheck } from "react-icons/fi";
 import {
@@ -18,15 +18,16 @@ import {
   DARK_RED,
   LIGHT_GREEN,
   LIGHT_RED,
-} from "../../constants/colours.js";
+} from "../../constants/colours";
+import { State } from "../../state/store";
 
 export const TEST_ID_ANSWER_BUTTON = "answer-button";
 
 interface AnswerButtonProps {
   text: string;
-  correct: bool;
+  correct: boolean;
   index: number;
-  answered: bool;
+  answered: boolean;
   questionNumber: number;
 }
 
@@ -38,7 +39,7 @@ export default function AnswerButton({
   questionNumber,
 }: AnswerButtonProps) {
   const dispatch = useDispatch();
-  const lightTheme = useSelector((state) => state.lightTheme);
+  const lightTheme = useSelector((state: State) => state.lightTheme);
   const GREEN = lightTheme ? DARK_GREEN : LIGHT_GREEN;
   const RED = lightTheme ? DARK_RED : LIGHT_RED;
   const color =
@@ -91,6 +92,6 @@ const style = {
   margin: "5px 0px 5px 0px",
   display: "flex",
   alignItems: "center",
-  boxSizing: "border-box",
+  boxSizing: "border-box" as const,
   width: "100%",
 };

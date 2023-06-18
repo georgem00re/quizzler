@@ -7,7 +7,23 @@ import {
   settingsDialogOpen,
   lightTheme,
   statsDialogOpen,
-} from "./reducers.ts";
+} from "./reducers";
+
+export interface Question {
+  question: string;
+  correctAnswer: string;
+  incorrectAnswers: Array<string>;
+}
+
+export interface State {
+  quiz: Array<Question>;
+  answeredQuestions: Array<number>;
+  score: number;
+  helpDialogOpen: boolean;
+  settingsDialogOpen: boolean;
+  lightTheme: boolean;
+  statsDialogOpen: boolean;
+}
 
 const reducers = combineReducers({
   quiz: quizReducer,

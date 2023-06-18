@@ -1,21 +1,24 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { getQuiz } from "./services/data.service.ts";
-import QuestionContainer from "./components/containers/QuestionContainer.tsx";
-import LoadingIndicator from "./components/misc/LoadingIndicator.tsx";
-import NavigationBar from "./components/misc/NavigationBar.tsx";
-import Canvas from "./components/containers/Canvas.tsx";
-import { updateQuiz } from "./state/actions.ts";
+import { getQuiz } from "./services/data.service";
+import QuestionContainer from "./components/containers/QuestionContainer";
+import LoadingIndicator from "./components/misc/LoadingIndicator";
+import NavigationBar from "./components/misc/NavigationBar";
+import Canvas from "./components/containers/Canvas";
+import { updateQuiz } from "./state/actions";
 import React from "react";
-import HelpDialog from "./components/dialogs/HelpDialog.tsx";
-import StatsDialog from "./components/dialogs/StatsDialog.tsx";
-import { SPACE_GREY, WHITE } from "./constants/colours.js";
+import HelpDialog from "./components/dialogs/HelpDialog";
+import StatsDialog from "./components/dialogs/StatsDialog";
+import { SPACE_GREY, WHITE } from "./constants/colours";
+import { State } from "./state/store";
 
 function App() {
   const dispatch = useDispatch();
-  const quiz = useSelector((state) => state.quiz);
-  const answeredQuestions = useSelector((state) => state.answeredQuestions);
-  const lightTheme = useSelector((state) => state.lightTheme);
+  const quiz = useSelector((state: State) => state.quiz);
+  const answeredQuestions = useSelector(
+    (state: State) => state.answeredQuestions
+  );
+  const lightTheme = useSelector((state: State) => state.lightTheme);
   const backgroundColor = lightTheme ? WHITE : SPACE_GREY;
 
   useEffect(() => {

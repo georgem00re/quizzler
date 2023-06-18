@@ -1,13 +1,14 @@
 import React from "react";
-import { SPACE_GREY, WHITE } from "../../constants/colours.js";
+import { SPACE_GREY, WHITE } from "../../constants/colours";
 import { useSelector } from "react-redux";
+import { State } from "../../state/store";
 
 interface LogoProps {
   width: string;
 }
 
-export default function Logo(props: LogoProps): JSX.element {
-  const lightTheme = useSelector((state) => state.lightTheme);
+export default function Logo(props: LogoProps): JSX.Element {
+  const lightTheme = useSelector((state: State) => state.lightTheme);
   const color = lightTheme ? SPACE_GREY : WHITE;
 
   return (

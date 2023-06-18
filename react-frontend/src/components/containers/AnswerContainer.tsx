@@ -6,9 +6,9 @@ export default function AnswerContainer({ children }: PropsWithChildren) {
 
 const style = {
   display: "flex",
-  flexWrap: "wrap",
-  flexDirection: "row",
-  boxSizing: "border-box",
+  flexWrap: "wrap" as const,
+  flexDirection: "row" as const,
+  boxSizing: "border-box" as const,
   padding: "5px 0px 5px 0px",
   width: "100%",
   justifyContent: "center",

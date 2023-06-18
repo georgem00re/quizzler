@@ -24,3 +24,7 @@ module "s3_bucket" {
     can_put_and_delete = module.iam_role.arn
     depends_on = [module.iam_role]
 }
+
+output "s3_bucket_arn" {
+    value = aws_s3_bucket.s3_bucket.arn
+}
