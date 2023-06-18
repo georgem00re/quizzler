@@ -6,7 +6,7 @@ provider "aws" {
 
 module "s3_bucket" {
 	source = "./modules/aws_s3_bucket"
-	bucket_prefix = "quizzler-react-app-"
+	name = "quizzler-react-app"
 }
 
 module "iam_user" {

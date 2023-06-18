@@ -1,6 +1,6 @@
 
 resource "aws_s3_bucket" "this" {
-    bucket_prefix = var.bucket_prefix
+    bucket = var.name
 }
 
 resource "aws_s3_bucket_ownership_controls" "this" {
