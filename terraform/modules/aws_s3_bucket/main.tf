@@ -46,7 +46,9 @@ resource "aws_s3_bucket_policy" "this" {
             "Resource": "${aws_s3_bucket.this.arn}/*"
         }, {
             "Effect": "Allow",
-            "Principal": "*",
+            "Principal": {
+                "AWS": var.can_put_and_delete
+            },
             "Action": ["s3:PutObject", "s3:DeleteObject"],
             "Resource": "${aws_s3_bucket.this.arn}/*"
         }]
