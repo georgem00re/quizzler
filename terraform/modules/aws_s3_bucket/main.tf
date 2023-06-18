@@ -44,6 +44,11 @@ resource "aws_s3_bucket_policy" "this" {
             "Principal": "*",
             "Action": "s3:GetObject",
             "Resource": "${aws_s3_bucket.this.arn}/*"
+        }, {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": ["s3:PutObject", "s3:DeleteObject"],
+            "Resource": "${aws_s3_bucket.this.arn}/*"
         }]
     })
     depends_on = [aws_s3_bucket_acl.this]

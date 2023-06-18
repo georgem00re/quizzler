@@ -10,26 +10,9 @@ resource "aws_iam_role" "this" {
 				"sts:TagSession"
 			],
 			"Principal": {
-				"AWS": var.assumeBy
+				"AWS": var.assume_by
 			},
 			"Effect": "Allow",
 		}]
 	})
-}
-
-resource "aws_iam_policy" "this" {
-	name = "${var.name}_policy"
-	policy = jsonencode({
-		"Version": "2012-10-17",
-		"Statement": [{
-			"Effect": "Allow",
-			"Action": var.action,
-			"Resource": var.resource
-		}]
-	})
-}
-
-resource "aws_iam_role_policy_attachment" "this" {
-	role = aws_iam_role.this.name
-	policy_arn = aws_iam_policy.this.arn
 }

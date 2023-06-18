@@ -7,14 +7,6 @@ variable "description" {
 	type = string
 }
 
-variable "assumeBy" {
+variable "assume_by" {
 	type = string
-}
-
-variable "action" {
-	type = list
-}
-
-variable "resource" {
-	type = list
 }
