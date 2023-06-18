@@ -1,8 +1,8 @@
 name: push-react-app-to-s3-bucket
-on:
-  push:
-    branches:
-      - master
+on: workflow_dispatch
+  # push:
+  #   branches:
+  #     - master
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
