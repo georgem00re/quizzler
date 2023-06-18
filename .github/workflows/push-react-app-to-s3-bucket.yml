@@ -13,23 +13,27 @@ jobs:
         uses: actions/setup-node@v3.6.0
         with:
           node-version: 18
-      - name: Set up Terraform
-        uses: hashicorp/setup-terraform@v2
-        with:
-          terraform_version: 1.1.7
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
+      - name: Build React app
+        run: npm ci && npm run build
+        working-directory: ./react-frontend
+      - name: Update apt-get
+        run: sudo apt-get update
+      - name: Install AWS CLI
+        run: sudo apt-get -y install awscli
+      - name: Configure AWS Credentials for IAM user
+        uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
-        - name: Build React app
-          run: npm ci && npm run build
-          working-directory: ./react-frontend
-        - name: Fetch S3 bucket ARN
-          run: |
-            echo "S3_BUCKET_ARN=$(terraform output s3_bucket_arn)" >> $GITHUB_ENV
-          working-directory: ./terraform
-        - name: Push React app to S3 bucket
-          run: aws s3 sync ./dist/ ${{ env.S3_BUCKET_ARN }} --delete
-          working-directory: ./react-frontend
+          aws-region: eu-west-2
+      - name: Assume 'update_s3_bucket' IAM role
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: arn:aws:iam::864705064109:role/update_s3_bucket
+          role-session-name: GitHubActions
+          role-chaining: true
+          aws-region: eu-west-2
+          role-skip-session-tagging: true
+      - name: Push React app to S3 bucket
+        run: aws s3 sync . s3://quizzler-react-app
+        working-directory: ./react-frontend/dist/
