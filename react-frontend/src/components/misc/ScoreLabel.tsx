@@ -1,14 +1,17 @@
 import React from "react";
-import { SPACE_GREY, WHITE } from "../../constants/colours.js";
+import { SPACE_GREY, WHITE } from "../../constants/colours";
 import { useSelector } from "react-redux";
+import { State } from "../../state/store";
 
 export default function ScoreLabel() {
-  const lightTheme = useSelector((state) => state.lightTheme);
+  const lightTheme = useSelector((state: State) => state.lightTheme);
   const textColor = lightTheme ? SPACE_GREY : WHITE;
   const borderColor = lightTheme ? SPACE_GREY : WHITE;
-  const answeredQuestions = useSelector((state) => state.answeredQuestions);
+  const answeredQuestions = useSelector(
+    (state: State) => state.answeredQuestions
+  );
   const isQuizComplete = answeredQuestions.length >= 5;
-  const score = useSelector((state) => state.score);
+  const score = useSelector((state: State) => state.score);
   console.log(score);
 
   return (
@@ -43,6 +46,6 @@ const style = {
   alignItems: "center",
   fontFamily: "Avenir Black",
   marginTop: "5px",
-  textAlign: "center",
+  textAlign: "center" as const,
   fontSize: "20px",
 };

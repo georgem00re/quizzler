@@ -1,5 +1,5 @@
 import React from "react";
-import { getQuiz } from "../services/data.service.ts";
+import { getQuiz } from "../../services/data.service";
 import { useDispatch } from "react-redux";
 import { BsFillPlayFill } from "react-icons/bs";
 

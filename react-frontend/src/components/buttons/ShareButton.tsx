@@ -3,7 +3,8 @@ import { BsShareFill } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { Fragment } from "react";
-import { WHITE, SPACE_GREY } from "../../constants/colours.js";
+import { WHITE, SPACE_GREY } from "../../constants/colours";
+import { State } from "../../state/store";
 
 export default function ShareButton() {
   const [popupVisible, setPopupVisble] = useState(false);
@@ -33,7 +34,7 @@ export default function ShareButton() {
 }
 
 function ClipboardPopup() {
-  const lightTheme = useSelector((state) => state.lightTheme);
+  const lightTheme = useSelector((state: State) => state.lightTheme);
   const backgroundColor = lightTheme ? SPACE_GREY : WHITE;
   const textColor = lightTheme ? WHITE : SPACE_GREY;
   return (
@@ -59,7 +60,7 @@ const style = {
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  flexDirection: "row",
+  flexDirection: "row" as const,
   paddingLeft: "20px",
   paddingRight: "20px",
   borderRadius: "5px",

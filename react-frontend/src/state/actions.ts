@@ -1,11 +1,11 @@
-export function updateQuiz(quiz) {
+export function updateQuiz(quiz: object) {
   return {
     type: "UPDATE_QUIZ",
     payload: quiz,
   };
 }
 
-export function answerQuestion(index) {
+export function answerQuestion(index: number) {
   return {
     type: "ANSWER_QUESTION",
     payload: index,

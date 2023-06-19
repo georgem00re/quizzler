@@ -1,4 +1,3 @@
-
 export const SPACE_GREY = "#212121";
 export const WHITE = "#FFFFFF";
 export const GREY = "#3D3D3E";
