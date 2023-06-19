@@ -24,3 +24,8 @@ module "s3_bucket" {
     can_put_and_delete = module.iam_role.arn
     depends_on = [module.iam_role]
 }
+
+module "route53_domain" {
+	source = "./modules/aws_route53_domain"
+	depends_on = [module.s3_bucket]
+}
