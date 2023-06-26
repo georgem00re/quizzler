@@ -1,0 +1,44 @@
+name: push-backend-to-ecr-repository
+on: workflow_dispatch
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout Git repository
+        uses: actions/checkout@v2
+
+      - name: Update apt-get
+        run: sudo apt-get update
+
+      - name: Install AWS CLI
+        run: sudo apt-get -y install awscli
+
+      - name: Configure AWS Credentials for IAM user
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-2
+
+      - name: Assume XXXXXXXX IAM role
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: XXXXXXXX
+          role-session-name: GitHubActions
+          role-chaining: true
+          aws-region: eu-west-2
+          role-skip-session-tagging: true
+
+      - name: Login to Amazon ECR
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Build, tag, and push image
+        env:
+          ECR_REGISTRY: XXXXXXXX
+          ECR_REPOSITORY: XXXXXXXX
+          IMAGE_TAG: XXXXXXXX
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        working-directory: ./nodejs-backend
