@@ -1,14 +1,15 @@
 import React from "react";
 import { BiStats } from "react-icons/bi";
-import { openStatsDialog } from "../../state/actions.ts";
+import { openStatsDialog } from "../../state/actions";
 import { useDispatch, useSelector } from "react-redux";
-import { SPACE_GREY, WHITE } from "../../constants/colours.js";
+import { SPACE_GREY, WHITE } from "../../constants/colours";
+import { State } from "../../state/store";
 
 export const TEST_ID_STATS_BUTTON = "stats-button";
 
 export default function StatsButton() {
   const dispatch = useDispatch();
-  const lightTheme = useSelector((state) => state.lightTheme);
+  const lightTheme = useSelector((state: State) => state.lightTheme);
   const color = lightTheme ? SPACE_GREY : WHITE;
   return (
     <button

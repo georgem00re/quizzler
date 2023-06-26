@@ -1,13 +1,14 @@
 import React from "react";
-import HelpButton from "../buttons/HelpButton.tsx";
-import Logo from "./Logo.tsx";
-import StatsButton from "../buttons/StatsButton.tsx";
-import ToggleThemeButton from "../buttons/ToggleThemeButton.tsx";
-import { SPACE_GREY, WHITE, GREY } from "../../constants/colours.js";
+import HelpButton from "../buttons/HelpButton";
+import Logo from "./Logo";
+import StatsButton from "../buttons/StatsButton";
+import ToggleThemeButton from "../buttons/ToggleThemeButton";
+import { SPACE_GREY, WHITE, GREY } from "../../constants/colours";
 import { useSelector } from "react-redux";
+import { State } from "../../state/store";
 
 export default function NavigationBar() {
-  const lightTheme = useSelector((state) => state.lightTheme);
+  const lightTheme = useSelector((state: State) => state.lightTheme);
   const backgroundColor = lightTheme ? WHITE : SPACE_GREY;
   const textColor = lightTheme ? SPACE_GREY : WHITE;
   const borderColor = lightTheme ? "#CFCFCF" : GREY;
@@ -39,10 +40,10 @@ const style = {
   height: "60px",
   justifyContent: "space-between",
   alignItems: "center",
-  borderBottomStyle: "solid",
+  borderBottomStyle: "solid" as const,
   borderWidth: "1px",
   borderColor: "#CFCFCF",
-  flexDirection: "row",
+  flexDirection: "row" as const,
 };
 
 const header = {

@@ -1,11 +1,11 @@
 import { describe, test, expect, beforeEach } from "vitest";
 import { screen, waitFor, fireEvent } from "@testing-library/react";
-import { TEST_ID_HELP_BUTTON } from "../components/buttons/HelpButton.tsx";
+import { TEST_ID_HELP_BUTTON } from "../components/buttons/HelpButton";
 import {
   TEST_ID_HELP_DIALOG,
   TEST_ID_HELP_DIALOG_DISMISS,
-} from "../components/dialogs/HelpDialog.tsx";
-import { renderApp } from "./helpers/renderApp.tsx";
+} from "../components/dialogs/HelpDialog";
+import { renderApp } from "./helpers/renderApp";
 
 describe("HelpDialog", () => {
   beforeEach(() => {
