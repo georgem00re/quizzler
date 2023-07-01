@@ -12,3 +12,11 @@ output "iam_user_secret_access_key" {
 	value = module.iam_user.secret_access_key
 	sensitive = true
 }
+
+output "update_s3_bucket_iam_role" {
+	value = module.update_s3_bucket_iam_role.arn
+}
+
+output "update_ecr_repository_iam_role" {
+	value = module.update_ecr_repository_iam_role.arn
+}
