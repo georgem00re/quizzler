@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.NODEJS_BACKEND_PORT
+const PORT = process.env.NODEJS_BACKEND_PORT || 3000;
 const fetchQuiz = require("./utils/fetchQuiz.js");
 const cors = require("cors");
 const schedule = require("node-schedule");
