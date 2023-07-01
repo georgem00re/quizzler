@@ -1,19 +1,15 @@
 
 resource "aws_ecs_task_definition" "this" {
-	family = var.task_name
-
-
+	family = var.name
 	container_definitions = jsonencode([{
 		name = "first"
-		image = var.aws_ecr_repository_url
+		image = var.image_url
 		essential = true
-
 		portMappings = [{
 			containerPort = var.container_port
 			hostPort = var.host_port
 		}]
-
-		memory = 512
-		cpu = 256
+		memory = var.memory
+		cpu = var.cpu
 	}])
 }
