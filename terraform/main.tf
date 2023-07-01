@@ -48,4 +48,10 @@ module "ecs_cluster" {
 
 module "ecs_task_definition" {
 	source = "./modules/aws_ecs_task_definition"
+	name = "quizzler_task_definition"
+	host_port = 5678
+	container_port = 5678
+	memory = 512
+	cpu = 10
+	image_url = "864705064109.dkr.ecr.eu-west-2.amazonaws.com/quizzler:latest"
 }
