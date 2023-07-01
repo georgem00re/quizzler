@@ -45,3 +45,7 @@ module "ecs_cluster" {
 	cluster_name = "quizzler_backend"
 	depends_on = []
 }
+
+module "ecs_task_definition" {
+	source = "./modules/aws_ecs_task_definition"
+}
