@@ -28,4 +28,5 @@ module "s3_bucket" {
 module "ecr_repository" {
 	source = "./modules/aws_ecr_repository"
 	name = "quizzler-backend"
+	can_push = module.iam_role.arn
 }
