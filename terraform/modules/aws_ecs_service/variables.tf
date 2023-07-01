@@ -14,3 +14,7 @@ variable "task_definition_arn" {
 variable "desired_count" {
 	type = number
 }
+
+variable "launch_type" {
+	type = string
+}
