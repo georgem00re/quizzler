@@ -10,10 +10,18 @@ module "iam_user" {
 	depends_on = []
 }
 
-module "iam_role" {
+module "update_s3_bucket_iam_role" {
 	source = "./modules/aws_iam_role"
-	name = "quizzler_developer"
-	description = "IAM role for managing Quizzler infrastructure"
+	name = "update_s3_bucket"
+	description = "IAM role for pushing to S3 bucket"
+	assume_by = module.iam_user.arn
+	depends_on = [module.iam_user]
+}
+
+module "update_ecr_repository_iam_role" {
+	source = "./modules/aws_iam_role"
+	name = "update_ecr_repository"
+	description = "IAM role for pushing to ECR repository"
 	assume_by = module.iam_user.arn
 	depends_on = [module.iam_user]
 }
@@ -21,13 +29,13 @@ module "iam_role" {
 module "s3_bucket" {
 	source = "./modules/aws_s3_bucket"
 	name = "quizzler-react-app"
-    can_put_and_delete = module.iam_role.arn
-    depends_on = [module.iam_role]
+    can_put_and_delete = module.update_s3_bucket_iam_role.arn
+    depends_on = [module.update_s3_bucket_iam_role]
 }
 
 module "ecr_repository" {
 	source = "./modules/aws_ecr_repository"
 	name = "quizzler"
-	can_push = module.iam_role.arn
-	depends_on = [module.iam_role]
+	can_push = module.update_ecr_repository_iam_role.arn
+	depends_on = [module.update_ecr_repository_iam_role]
 }
