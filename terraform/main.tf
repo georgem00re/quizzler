@@ -51,8 +51,8 @@ module "ecs_task_definition" {
 	name = "quizzler_task_definition"
 	host_port = 3000
 	container_port = 3000
-	memory = 512
-	cpu = 10
+	memory = 2048
+	cpu = 1024
 	image_url = "864705064109.dkr.ecr.eu-west-2.amazonaws.com/quizzler:latest"
 }
 
