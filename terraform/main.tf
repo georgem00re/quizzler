@@ -62,4 +62,5 @@ module "ecs_service" {
 	cluster_id = module.ecs_cluster.id
 	task_definition_arn = module.ecs_task_definition.arn
 	desired_count = 1
+	depends_on = [module.ecs_cluster, module.ecs_task_definition]
 }
