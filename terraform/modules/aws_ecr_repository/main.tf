@@ -19,3 +19,24 @@ resource "aws_ecr_repository_policy" "this" {
         }]
     })
 }
+
+resource "aws_iam_policy" "this" {
+    name = "enable-ecr-get-authorization-token"
+    policy = jsonencode({
+        "Version": "2012-10-17"
+        Statement = [{
+            "Action": ["ecr:GetAuthorizationToken"],
+            "Effect": "Allow",
+            "Resource": "*"
+        }]
+    })
+}
+
+locals {
+    role_name = split("/", var.can_push)[1]
+}
+
+resource "aws_iam_role_policy_attachment" "this" {
+  policy_arn = aws_iam_policy.this.arn
+  role = local.role_name
+}
