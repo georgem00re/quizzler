@@ -12,8 +12,8 @@ module "iam_user" {
 
 module "iam_role" {
 	source = "./modules/aws_iam_role"
-	name = "update_s3_bucket"
-	description = "IAM role for pushing to and deleting from S3 bucket"
+	name = "quizzler_developer"
+	description = "IAM role for managing Quizzler infrastructure"
 	assume_by = module.iam_user.arn
 	depends_on = [module.iam_user]
 }
@@ -27,6 +27,7 @@ module "s3_bucket" {
 
 module "ecr_repository" {
 	source = "./modules/aws_ecr_repository"
-	name = "quizzler-backend"
+	name = "quizzler"
 	can_push = module.iam_role.arn
+	depends_on = [module.iam_role]
 }
