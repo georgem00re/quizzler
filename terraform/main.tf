@@ -55,3 +55,11 @@ module "ecs_task_definition" {
 	cpu = 10
 	image_url = "864705064109.dkr.ecr.eu-west-2.amazonaws.com/quizzler:latest"
 }
+
+module "ecs_service" {
+	source = "./modules/aws_ecs_service"
+	name = "quizzler_service"
+	cluster_id = module.ecs_cluster.id
+	task_definition_arn = module.ecs_task_definition.arn
+	desired_count = 1
+}
