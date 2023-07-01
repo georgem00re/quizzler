@@ -39,3 +39,9 @@ module "ecr_repository" {
 	can_push = module.update_ecr_repository_iam_role.arn
 	depends_on = [module.update_ecr_repository_iam_role]
 }
+
+module "ecs_cluster" {
+	source = "./modules/aws_ecs_cluster"
+	cluster_name = "quizzler_backend"
+	depends_on = []
+}
