@@ -15,7 +15,15 @@ resource "aws_ecr_repository_policy" "this" {
             "Principal": {
             	"AWS": var.can_push
             },
-            "Action": ["ecr:PutImage"]
+            "Action": [
+                "ecr:BatchGetImage",
+                "ecr:BatchCheckLayerAvailability",
+                "ecr:CompleteLayerUpload",
+                "ecr:GetDownloadUrlForLayer",
+                "ecr:InitiateLayerUpload",
+                "ecr:PutImage",
+                "ecr:UploadLayerPart"
+            ]
         }]
     })
 }
