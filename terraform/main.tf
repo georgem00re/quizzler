@@ -24,3 +24,8 @@ module "s3_bucket" {
     can_put_and_delete = module.iam_role.arn
     depends_on = [module.iam_role]
 }
+
+module "ecr_repository" {
+	source = "./modules/aws_ecr_repository"
+	name = "quizzler-backend"
+}
