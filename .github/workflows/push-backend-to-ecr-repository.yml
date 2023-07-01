@@ -34,14 +34,13 @@ jobs:
         id: login-aws-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
-      # - name: Login to Amazon ECR
-      #   uses: aws-actions/amazon-ecr-login@v1
-      # - name: Build, tag, and push image
-      #   env:
-      #     ECR_REGISTRY: XXXXXXXX
-      #     ECR_REPOSITORY: XXXXXXXX
-      #     IMAGE_TAG: XXXXXXXX
-      #   run: |
-      #     docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-      #     docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-      #   working-directory: ./nodejs-backend
+      - name: Build, tag, and push image to ECR
+        env:
+          ECR_REGISTRY: ${{ steps.login-aws-ecr.outputs.registry }}
+          ECR_REPOSITORY: quizzler
+          IMAGE_TAG: latest
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          echo "Pushing image to ECR..."
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        working-directory: ./nodejs-backend
